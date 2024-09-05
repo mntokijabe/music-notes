@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS "users" (
+CREATE TABLE IF NOT EXISTS "user" (
 	"id" serial NOT NULL UNIQUE,
 	"username" varchar(255) NOT NULL UNIQUE,
 	"password" varchar(255) NOT NULL,
@@ -80,16 +80,11 @@ ALTER TABLE "genres_songs" ADD CONSTRAINT "genres_songs_fk1" FOREIGN KEY ("genre
 ALTER TABLE "genres_songs" ADD CONSTRAINT "genres_songs_fk2" FOREIGN KEY ("song_id") REFERENCES "songs"("id");
 
 
-ALTER TABLE "performances_songs" ADD CONSTRAINT "performances_songs_fk1" FOREIGN KEY ("performances_id") REFERENCES "performances"("id");
+ALTER TABLE "performances_songs" ADD CONSTRAINT "performances_songs_fk1" FOREIGN KEY ("performance_id") REFERENCES "performances"("id");
 
 ALTER TABLE "performances_songs" ADD CONSTRAINT "performances_songs_fk2" FOREIGN KEY ("song_id") REFERENCES "songs"("id");
 
 ALTER TABLE "performances_songs" ADD CONSTRAINT "performances_songs_fk4" FOREIGN KEY ("ensemble_id") REFERENCES "ensembles"("id");
-
-
--- SEED DATA
---
---
 
 INSERT INTO ensembles
  (name)
@@ -142,7 +137,7 @@ VALUES
 ( 'Hinshaw Music'),
 ( 'Oxford University Press');
 
-INSERT INTO users
+INSERT INTO "user"
  (username, password, admin)
 VALUES
 ( 'timbrown', 'tinytim', true),
@@ -188,7 +183,7 @@ VALUES
 INSERT INTO performances
  (date)
  VALUES
- ('10-14-2022'),
+ ('10/14/2022'),
  ('11/5/2022'),
  ('12/18/2022'),
  ('02/05/2023'),
@@ -250,8 +245,3 @@ INSERT INTO genres_songs
 	(8,25),
 	(8,14),
 	(9,4);
-	  
-  
-  
-  
-  
