@@ -24,7 +24,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
-import MainContent from '../MainSearch/MainSearch';
+import MainContent from '../MainContent/MainContent';
 
 import './App.css';
 
