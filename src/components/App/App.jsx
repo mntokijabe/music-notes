@@ -5,8 +5,6 @@ import {
   Route,
   Switch,
   BrowserRouter,
-  Routes,
-  Outlet,
 } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Container, Grid, Paper } from '@mui/material';
@@ -18,13 +16,18 @@ import Sidebar from '../Sidebar/Sidebar';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
-import AboutPage from '../AboutPage/AboutPage';
-import UserPage from '../UserPage/UserPage';
-import InfoPage from '../InfoPage/InfoPage';
+import SearchPage from '../Search/SearchPage';
+import SearchResults from '../Search/SearchResults';
+import SongInfo from '../SongDisplay/SongInfo';
+import SongEdit from '../SongDisplay/SongEdit';
+import AddSong from '../SongDisplay/AddSong';
+import ViewNotes from '../Performances/ViewNotes';
+import AddNotes from '../Performances/AddNotes';
+import Scheduler from '../Calendar/Scheduler';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
-import MainContent from '../MainContent/MainContent';
+
 
 import './App.css';
 
@@ -33,14 +36,14 @@ function App() {
 
   const user = useSelector(store => store.user);
 
-  const Layout = () => {
+  const Layout = ({children}) => {
     return (
       <>
         <Header />
         <Nav />
         <Container component="main" style={{ display: 'flex', flex: 1}}>
           <Sidebar />
-          <Outlet />
+          {children}
         </Container>
         <Footer />
        </>
@@ -50,18 +53,44 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout />}>
+
+          <Layout >
           <Switch>
             <Redirect exact from="/" to="/home" />
 
             <ProtectedRoute exact path="/user">
-              <MainContent />
+              <SearchPage />
+            </ProtectedRoute>
+
+            <ProtectedRoute exact path="/searchresults">
+              <SearchResults />
             </ProtectedRoute>
 
             <ProtectedRoute exact path="/info">
-              <InfoPage />
+              <SongInfo />
             </ProtectedRoute>
+
+            <ProtectedRoute exact path="/edit">
+              <SongEdit />
+            </ProtectedRoute>
+
+            <ProtectedRoute exact path="/addsong">
+              <AddSong />
+            </ProtectedRoute>
+
+            <ProtectedRoute exact path="/viewnotes">
+              <ViewNotes />
+            </ProtectedRoute>
+
+            <ProtectedRoute exact path="/newnote">
+              <AddNotes />
+            </ProtectedRoute>
+
+            <ProtectedRoute exact path="/calendar">
+              <Scheduler />
+            </ProtectedRoute>
+
+
 
             <Route exact path="/login" >
               {user.id ? <Redirect to="/user" /> : <LoginPage /> }
@@ -79,10 +108,8 @@ function App() {
               <h1>404</h1>
             </Route>
           </Switch>
+          </Layout>
 
-
-          </Route>
-        </Routes>
       </BrowserRouter>
     </>
   )

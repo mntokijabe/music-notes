@@ -1,7 +1,7 @@
 import React from 'react';
 import { Paper, Typography } from '@mui/material';
 
-function MainContent() {
+function SearchPage() {
   return (
     <Paper style={{ flex: 1, padding: 16 }}>
       <Typography variant="h4">Main Content Area</Typography>
@@ -12,4 +12,4 @@ function MainContent() {
   );
 }
 
-export default MainContent;
+export default SearchPage;

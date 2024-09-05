@@ -1,13 +1,16 @@
 import React from 'react';
-import { Drawer, List, ListItem, ListItemText } from '@mui/material';
+import { Box, List, ListItem, ListItemText } from '@mui/material';
 
 function Sidebar() {
+
+    
   return (
-    <Drawer
+    <Box
       variant="permanent"
-      sx={{ width: 240, flexShrink: 0, '& .MuiDrawer-paper': { width: 240, boxSizing: 'border-box' } }}
+      sx={{width: 180, flexShrink: 0, marginLeft:-3, marginRight:2, '& .MuiBox-paper': { width: 1800, boxSizing: 'border-box' }, bgcolor:'lightgray'}}
     >
-      <List  sx={{mt:'8rem'}}>
+    
+      <List  sx={{mt:'12rem'}}>
         <ListItem button>
           <ListItemText primary="Item 1" />
         </ListItem>
@@ -18,7 +21,7 @@ function Sidebar() {
           <ListItemText primary="Item 3" />
         </ListItem>
       </List>
-    </Drawer>
+    </Box>
   );
 }
 
