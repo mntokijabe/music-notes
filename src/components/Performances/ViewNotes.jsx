@@ -7,7 +7,7 @@ export default function ViewNotes () {
         <>
         
         
-        
+        view notes
         
         </>
 

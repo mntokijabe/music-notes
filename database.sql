@@ -67,7 +67,12 @@ CREATE TABLE IF NOT EXISTS "performances_songs" (
 	PRIMARY KEY ("id")
 );
 
-
+CREATE TABLE IF NOT EXISTS "active_songs" (
+	"id" serial NOT NULL UNIQUE,
+	"song_id" int NOT NULL,
+	"ensemble_id" int NOT NULL,
+	PRIMARY KEY ("id")
+);
 
 ALTER TABLE "songs" ADD CONSTRAINT "songs_fk4" FOREIGN KEY ("voicing_id") REFERENCES "voicings"("id");
 
@@ -203,7 +208,20 @@ INSERT INTO performances
   (5, 12, 'Just missed qualifying for State with this.', 1),
   (6, 3, '', 5);
   
-  
+INSERT INTO active_songs
+  (ensemble_id, song_id)
+  VALUES
+	(1,4),
+	(1,7),
+	(1,10),
+	(2,2),
+	(2,12),
+	(3,3),
+	(3,6),
+	(3,9),
+	(3,11),
+	(4,3);
+
 INSERT INTO genres_songs
   (genre_id, song_id)
   VALUES
