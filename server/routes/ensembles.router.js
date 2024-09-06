@@ -10,7 +10,6 @@ router.get('/', (req, res) => {
 
     pool.query(queryText)
     .then(result=> {
-        console.log('result of ensembles',result)
         res.send(result.rows);
     })
     .catch(err => {
@@ -20,7 +19,6 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-    console.log('req body is: ', req.body)
     const queryText = `
         SELECT songs.title, active_songs.id FROM songs
   	        JOIN active_songs
@@ -29,7 +27,6 @@ router.get('/:id', (req, res) => {
     const queryValues = [req.params.id]
     pool.query(queryText, queryValues)
     .then(result => {
-        console.log('result of active songs is: ',result);
         res.send(result.rows);
     }) 
     .catch(err => {

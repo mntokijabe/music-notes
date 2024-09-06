@@ -22,8 +22,7 @@ function Sidebar() {
         setChoralGroup(e.target.value) 
         dispatch({ type: 'GET_ACTIVE_SONGS', payload: e.target.value})
     }
-console.log ('user id is: ',user.id)
-console.log ('active songs are ',activeSongs)
+
   return (
     
     <Box
@@ -42,14 +41,14 @@ console.log ('active songs are ',activeSongs)
         <p></p>
     
 
-      <List  sx={{mt:'4rem'}}>
+      {/* <List  sx={{mt:'4rem'}}>
         This group is currently singing:
       {activeSongs.map((song) => (
         <ListItem key={song.id} component={Link} to={`/info/${song.id}`} >
             <ListItemText primary={song.title} />
         </ListItem>
         ))}
-      </List>
+      </List> */}
     </Box>
 
   );
