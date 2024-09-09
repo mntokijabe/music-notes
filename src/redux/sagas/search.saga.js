@@ -14,8 +14,8 @@ function* searchThing(action) {
             }})
 
         yield put({ type: 'SET_SEARCH_RESULTS', payload: searchResults }) 
-        // const {history} = action
-        // history.push('/search/:category')
+        const {history} = action
+        history.push(`/search/${category}`)
     }catch (error) {
         console.log('Error getting search results', error)
     }
