@@ -8,7 +8,7 @@
         const params = useParams();
         const category = params.id;
         const dispatch = useDispatch();
-        const searchResults = useSelector(store => store.searchResults);
+        const results = useSelector(store => store.searchResults);
 
     
     
@@ -19,7 +19,7 @@
             })
         }, [])
     
-        console.log('search results are: ',searchResults)
+        console.log('search results are: ',results)
         console.log('category is',category)
     
         return(

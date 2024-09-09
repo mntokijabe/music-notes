@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function* searchThing(action) {
     const category =  action.payload.category
-    const history = useHistory();
+    // const history = useHistory();
     try{
         const searchResults = yield axios.get('/api/search', 
             {params:{
@@ -15,7 +15,7 @@ function* searchThing(action) {
 
         yield put({ type: 'SET_SEARCH_RESULTS', payload: searchResults }) 
         // const {history} = action
-        history.push('/search/:category')
+        // history.push('/search/:category')
     }catch (error) {
         console.log('Error getting search results', error)
     }
