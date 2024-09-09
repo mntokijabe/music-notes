@@ -32,7 +32,12 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import './App.css';
 
 function App() {
+
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch({ type: 'FETCH_USER'})
+  },[dispatch]);
+
 
   const user = useSelector(store => store.user);
 
@@ -52,7 +57,7 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
+      <Router>
 
           <Layout >
           <Switch>
@@ -110,7 +115,7 @@ function App() {
           </Switch>
           </Layout>
 
-      </BrowserRouter>
+      </Router>
     </>
   )
 

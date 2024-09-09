@@ -54,7 +54,6 @@ router.get('/:id',  async (req, res) => {
             for (let genre of genreInfo.rows){
                 genreArray.push(genre.genre_name)
             }
-            console.log ('genreArray is now',genreArray)
             const songGenreInfo = [songInfo.rows[0],genreArray]
         // const queryGenreValues = [req.params.id]
         // pool.query(queryGenreText,queryGenreValues)

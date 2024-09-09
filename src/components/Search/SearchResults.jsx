@@ -19,12 +19,12 @@ export default function SearchResults () {
                         <tr key={pizza.id}>
                         <td>{pizza.name}</td>
                         <td>{pizza.price}</td>
-                        </tr> */}
+                        </tr>
                     )
-                })}
+                })} */}
             </tbody>
         </table>
-        
+        results are here
         
         </>
 

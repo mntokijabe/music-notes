@@ -5,6 +5,8 @@ import ensembles from './ensembles.reducer';
 import activeSongs from './activeSongs.reducer';
 import songInfo from './songInfo.reducer';
 import genreInfo from './genreInfo.reducer';
+import genreList from './genre.reducer';
+import voicings from './voice.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -19,6 +21,8 @@ const rootReducer = combineReducers({
   activeSongs, // songs the selected ensemble is currently singing
   songInfo,
   genreInfo,
+  genreList,
+  voicings,
 });
 
 export default rootReducer;

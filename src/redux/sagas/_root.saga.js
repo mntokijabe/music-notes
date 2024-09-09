@@ -4,6 +4,9 @@ import registrationSaga from './registration.saga';
 import userSaga from './user.saga';
 import getEnsembles from './ensembles.saga';
 import songs from './songs.saga';
+import genreList from './genres.saga';
+import voicings from './voicings.saga';
+import search from './search.saga'
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -19,5 +22,8 @@ export default function* rootSaga() {
     userSaga(),
     getEnsembles(),
     songs(),
+    genreList(),
+    voicings(),
+    search()
   ]);
 }

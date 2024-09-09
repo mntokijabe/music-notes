@@ -55,6 +55,7 @@ CREATE TABLE IF NOT EXISTS "ensembles" (
 CREATE TABLE IF NOT EXISTS "performances" (
 	"id" serial NOT NULL UNIQUE,
 	"date" date NOT NULL,
+	"description" varchar(255),
 	PRIMARY KEY ("id")
 );
 
@@ -142,14 +143,6 @@ VALUES
 ( 'Hinshaw Music'),
 ( 'Oxford University Press');
 
-INSERT INTO "user"
- (username, password, admin)
-VALUES
-( 'timbrown', 'tinytim', true),
-( 'amymadison', 'alto', false),
-( 'pipersund', 'soprano', false),
-( 'ryanmiller', 'tenor', false),
-( 'bobbybrown', 'bass', true);
 
 INSERT INTO songs
 (title, composer, arranged_by, voicing_id, quantity, copyright_year, publisher_id, image_url)
@@ -186,14 +179,15 @@ VALUES
 
 
 INSERT INTO performances
- (date)
+ (date, description)
  VALUES
- ('10/14/2022'),
- ('11/5/2022'),
- ('12/18/2022'),
- ('02/05/2023'),
- ('03/24/2023'),
- ('05/11/2023');
+ ('10-14-2022', 'Fall Concert'),
+ ('11/5/2022', 'Middle school concert'),
+ ('12/18/2022', 'Christmas concert'),
+ ('02/05/2023', 'Sweetheart banquet'),
+ ('03/24/2023', 'HS Spring concert'),
+ ('05/11/2023', 'MS Spring concert');
+ 
  
  INSERT INTO performances_songs
   (performance_id, song_id, song_notes, ensemble_id)
