@@ -1,9 +1,11 @@
 import axios from "axios";
 import { takeLatest, put } from "redux-saga/effects";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 
 function* searchThing(action) {
-    console.log('action is ', action.payload.category)
+    const category =  action.payload.category
+    const history = useHistory();
     try{
         const searchResults = yield axios.get('/api/search', 
             {params:{
@@ -13,7 +15,7 @@ function* searchThing(action) {
 
         yield put({ type: 'SET_SEARCH_RESULTS', payload: searchResults }) 
         // const {history} = action
-        // history.push('/searchresults')
+        history.push('/search/:category')
     }catch (error) {
         console.log('Error getting search results', error)
     }

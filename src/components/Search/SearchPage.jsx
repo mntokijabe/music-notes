@@ -37,7 +37,8 @@ function SearchPage() {
     switch (buttonValue) {
       case 'title':
         dispatch({ type: 'SEARCH_THING',
-          payload: { category: 'title', data: title }})
+          payload: { category: 'title', data: title },
+            history })
         break;
       case 'composer':
         dispatch({ type: 'SEARCH_THING',

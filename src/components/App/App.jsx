@@ -67,7 +67,7 @@ function App() {
               <SearchPage />
             </ProtectedRoute>
 
-            <ProtectedRoute exact path="/searchresults">
+            <ProtectedRoute exact path="/search/:id">
               <SearchResults />
             </ProtectedRoute>
 
