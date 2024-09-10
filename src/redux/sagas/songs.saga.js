@@ -37,13 +37,13 @@ function* deleteGenre(action) {
 }
 function* addGenre(action) {
     console.log('payload for addgenre is', action.payload)
-    // try {
+    try {
 
     yield axios.post('/api/songs',action.payload)
-    //     yield put({ type: 'SET_SONG_INFO', payload: songInfo})
-    // } catch (error) {
-    //     console.log('Error getting song info ',error)
-    // }
+    yield put({ type: 'GET_SONG_INFO', payload: action.payload.songId})
+    } catch (error) {
+        console.log('Error adding genre ',error)
+    }
 }
 
 function* songs() {

@@ -75,10 +75,18 @@ router.post('/', (req, res) => {
     console.log('req body is', req.body)
   const queryText = `
     INSERT INTO genres_songs
-        ('song_id', 'genre_id')
+        (song_id, genre_id)
         VALUES
-        $1, $2`
-    queryValues = [req.body.songId, Number(req.body.genreId)]
+        ($1, $2);`
+    queryValues = [Number(req.body.songId), Number(req.body.genreId)];
+    pool.query(queryText, queryValues)
+    .then(result => {
+        res.sendStatus(200);
+   })
+   .catch(dbErr => {
+    console.log('error posting new genre', dbErr)
+    res.sendStatus(500)
+   })
 });
 
 router.put('/', (req, res) => {
