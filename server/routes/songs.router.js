@@ -72,7 +72,6 @@ router.get('/:id',  async (req, res) => {
  * POST route template
  */
 router.post('/', (req, res) => {
-    console.log('req body is', req.body)
   const queryText = `
     INSERT INTO genres_songs
         (song_id, genre_id)
@@ -88,6 +87,22 @@ router.post('/', (req, res) => {
     res.sendStatus(500)
    })
 });
+router.delete('/', (req, res) => {
+    console.log('req.params in delete is ', req.query.songId)
+    const queryText = `
+        DELETE FROM genres_songs
+        WHERE song_id = $1 AND genre_id = $2;`
+    const queryValues = [req.query.songId, req.query.genreId];
+    pool.query(queryText,queryValues)
+    .then(result => {
+        res.sendStatus(200)
+    })
+    .catch(dbErr => {
+        console.log('the delete genre request had an error ',dbErr)
+        res.sendStatus(500)
+    })
+})
+
 
 router.put('/', (req, res) => {
 
