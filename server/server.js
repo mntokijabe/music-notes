@@ -9,6 +9,11 @@ const passport = require('./strategies/user.strategy');
 
 // Route Includes
 const userRouter = require('./routes/user.router');
+const ensemblesRouter = require('./routes/ensembles.router');
+const songsRouter = require('./routes/songs.router');
+const genresRouter = require('./routes/genres.router');
+const voicingRouter = require('./routes/voicings.router');
+const searchRouter = require('./routes/search.router')
 
 // Express Middleware
 app.use(express.json());
@@ -24,6 +29,11 @@ app.use(passport.session());
 
 // Routes
 app.use('/api/user', userRouter);
+app.use('/api/ensembles', ensemblesRouter);
+app.use('/api/songs', songsRouter);
+app.use('/api/genres', genresRouter);
+app.use('/api/voicings', voicingRouter)
+app.use('/api/search', searchRouter);
 
 // Listen Server & Port
 app.listen(PORT, () => {
