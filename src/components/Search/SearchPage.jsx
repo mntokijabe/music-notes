@@ -68,7 +68,7 @@ function SearchPage() {
   }
 
   const handleRadioChange = (event) => {
-    setButtonValue(event.target.value); // Update the selected value
+    setButtonValue(event.target.value); // Update the selected radio button value
     console.log(buttonValue)
   };
 

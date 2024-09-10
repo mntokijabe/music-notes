@@ -1,3 +1,5 @@
+// this reducer gets the genres of a specific cong
+
 const genreInfoReducer = (state = [], action) => {
     switch (action.type) {
       case 'SET_SONG_INFO':

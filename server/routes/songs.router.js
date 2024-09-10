@@ -39,7 +39,7 @@ router.get('/:id',  async (req, res) => {
                     WHERE songs.id = $1;`
             
             const queryGenreText = `
-                SELECT genre_name FROM genres
+                SELECT genre_name, genres.id AS genre_id FROM genres
                     JOIN genres_songs
                         ON genres.id = genres_songs.genre_id
                     JOIN songs
@@ -49,11 +49,12 @@ router.get('/:id',  async (req, res) => {
             const songInfo = await connection.query(querySongsText, querySongValues)
             const genreInfo = await connection.query(queryGenreText,querySongValues)
 
+            console.log('genreInfo is ',genreInfo)
             let genreArray=[]
-            for (let genre of genreInfo.rows){
-                genreArray.push(genre.genre_name)
-            }
-            const songGenreInfo = [songInfo.rows[0],genreArray]
+            // for (let genre of genreInfo.rows){
+            //     genreArray.push(genre.genre_name)
+            // }
+            const songGenreInfo = [songInfo.rows[0],genreInfo.rows]
         // const queryGenreValues = [req.params.id]
         // pool.query(queryGenreText,queryGenreValues)
         // .then(genreResult => {

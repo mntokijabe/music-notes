@@ -18,8 +18,12 @@ function SongInfo () {
         })
     }, [songId])
 
-
-
+    console.log('genreInfo is',genreInfo)
+    let genres = []
+    const makeList= () => {
+        for (let genre of genreInfo){
+            genres.push(genre.genre_name)
+        }}
     const handleChange = () => {
         activeEnsemble.length > 0 && addSong()
         
@@ -45,7 +49,7 @@ function SongInfo () {
                     <tr style={{height:'30px'}}> <td style={{width:'100px'}}>Composer:</td><td>{songInfo.composer}</td></tr>
                     <tr style={{height:'30px'}}> <td>Arranged by:</td><td>{songInfo.arranged_by}</td></tr>
                     <tr style={{height:'30px'}}> <td>Voicing:</td><td>{songInfo.voicing}</td></tr>
-                    <tr style={{height:'30px'}}> <td>Genre:</td><td>{...genreInfo.join(', ')}</td></tr>
+                    <tr style={{height:'30px'}}> <td>Genre:</td><td>{...genres.join(", ")}</td></tr>
                     <tr style={{height:'30px'}}> <td>Publisher:</td><td>{songInfo.name}</td></tr>
                     <tr style={{height:'30px'}}> <td>Copyright:</td><td>{songInfo.copyright_year}</td></tr>
                     <tr style={{height:'50px'}}> <td>Copies on Hand:</td><td>{songInfo.quantity}</td></tr>     

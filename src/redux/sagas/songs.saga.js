@@ -8,7 +8,6 @@ function* fetchSongInfo(action) {
     try {
 
         const songInfo = yield axios.get(`/api/songs/${action.payload}`)
-        console.log('song info is:',songInfo)
         yield put({ type: 'SET_SONG_INFO', payload: songInfo})
     } catch (error) {
         console.log('Error getting song info ',error)
