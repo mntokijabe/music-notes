@@ -1,7 +1,8 @@
 import { useSelector,useDispatch } from "react-redux";
 import { useEffect } from 'react';
-import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
-import { Box } from "@mui/material";
+import { useHistory, useParams, Link } from "react-router-dom/cjs/react-router-dom.min";
+import { Box, Button } from "@mui/material";
+
 
 function SongInfo () {
     const params = useParams();
@@ -9,8 +10,7 @@ function SongInfo () {
     const dispatch = useDispatch();
     const songInfo = useSelector(store => store.songInfo);
     const genreInfo = useSelector(store => store.genreInfo)
-
-
+    const activeEnsemble = useSelector(store => store.activeSongs)
 
     useEffect(() =>{
         dispatch({
@@ -18,9 +18,25 @@ function SongInfo () {
         })
     }, [songId])
 
-    console.log('songInfo is: ',songInfo)
-    console.log('genreInfo is',genreInfo)
 
+
+    const handleChange = () => {
+        activeEnsemble.length > 0 && addSong()
+        
+        // (() => {
+        //     alert('You are adding this song to the repertoire of the ensemble: '+ activeEnsemble[0].name);
+        //     console.log('payload here is', activeEnsemble[0].ensemble_id + songInfo.id)
+        //     dispatch({ type: 'ADD_TO_REPERTOIRE', payload:{ensemble: activeEnsemble[0].ensemble_id, song: songInfo.id}})
+        // })
+        activeEnsemble.length === 0 && alert('You must first select an ensemble in the sidebar')
+    };
+
+    function addSong(){
+                    alert('You are adding this song to the repertoire of the ensemble: '+ activeEnsemble[0].name);
+            console.log('payload here is', activeEnsemble[0].ensemble_id + songInfo.id)
+            dispatch({ type: 'ADD_TO_REPERTOIRE', payload:{ensemble_id: activeEnsemble[0].ensemble_id, song_id: Number(songId)}})
+        }
+    
     return(
         <Box sx={{ml:5}}>
             <table>
@@ -36,8 +52,11 @@ function SongInfo () {
                 </tbody>
             </table>
 
-            
-     
+            <Box>
+            <Button component={Link} to={`/edit/${songInfo.id}`} variant="contained">Edit Info</Button>
+            <Button component={Link} to={`/newnote/${songInfo.id}`} variant="contained">Add Performance Note</Button>
+            <Button onClick={handleChange} variant="contained">Add to Repertoire</Button>
+            </Box>
 
         
          

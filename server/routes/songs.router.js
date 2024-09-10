@@ -30,7 +30,7 @@ router.get('/:id',  async (req, res) => {
                 SELECT 
                 songs.title, songs.composer, songs.arranged_by, 
                 voicings.name AS voicing, publishers.name, songs.copyright_year, 
-                songs.quantity
+                songs.quantity, songs.id
                     FROM songs
                     JOIN voicings
                         ON songs.voicing_id = voicings.id
@@ -49,7 +49,6 @@ router.get('/:id',  async (req, res) => {
             const songInfo = await connection.query(querySongsText, querySongValues)
             const genreInfo = await connection.query(queryGenreText,querySongValues)
 
-            console.log('query results are: ',genreInfo.rows)
             let genreArray=[]
             for (let genre of genreInfo.rows){
                 genreArray.push(genre.genre_name)

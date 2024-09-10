@@ -15,7 +15,6 @@ function Sidebar() {
     },[]);
 
 
-console.log('the ensembles are', ensembles)
     const handleSelect = (e) => {
         e.preventDefault();
         setChoralGroup(e.target.value) 
@@ -43,7 +42,7 @@ console.log('the ensembles are', ensembles)
       <List  sx={{mt:'4rem'}}>
         This group is currently singing:
       {activeSongs.map((song) => (
-        <ListItem key={song.id} component={Link} to={`/info/${song.id}`} >
+        <ListItem key={song.id} component={Link} to={`/info/${song.song_id}`} >
             <ListItemText primary={song.title} />
         </ListItem>
         ))}

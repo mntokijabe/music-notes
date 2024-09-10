@@ -75,7 +75,7 @@ function App() {
               <SongInfo />
             </ProtectedRoute>
 
-            <ProtectedRoute exact path="/edit">
+            <ProtectedRoute exact path="/edit/:id">
               <SongEdit />
             </ProtectedRoute>
 
@@ -83,11 +83,11 @@ function App() {
               <AddSong />
             </ProtectedRoute>
 
-            <ProtectedRoute exact path="/viewnotes">
+            <ProtectedRoute exact path="/viewnotes/:id">
               <ViewNotes />
             </ProtectedRoute>
 
-            <ProtectedRoute exact path="/newnote">
+            <ProtectedRoute exact path="/newnote/:id">
               <AddNotes />
             </ProtectedRoute>
 

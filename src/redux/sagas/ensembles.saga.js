@@ -14,6 +14,7 @@ function* fetchEnsembles() {
 }
 
 function* fetchActiveSongs(action) {
+  console.log('in fetchActiveSongs')
     try {
 
         const activeSongs = yield axios.get(`/api/ensembles/${action.payload}`)
@@ -23,9 +24,21 @@ function* fetchActiveSongs(action) {
     }
 }
 
+function* addToRepertoire (action) {
+  try {
+
+      yield axios.post('/api/ensembles',action.payload)
+      yield put({ type: 'GET_ACTIVE_SONGS', payload:action.payload.ensemble_id})
+  } catch (error) {
+      console.log('Error getting active songs ',error)
+  }
+}
+
+
 function* getEnsembles() {
   yield takeLatest('GET_ENSEMBLES', fetchEnsembles);
   yield takeLatest('GET_ACTIVE_SONGS', fetchActiveSongs);
+  yield takeLatest('ADD_TO_REPERTOIRE', addToRepertoire);
 }
 
 export default getEnsembles;

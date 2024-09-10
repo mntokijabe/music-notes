@@ -114,3 +114,56 @@ input {
 
 }
 
+/* TABLE STYLING */
+table {
+  border: 1px solid darkolivegreen;
+  border-collapse: collapse;
+}
+
+th {
+  border-right: 1px solid white;
+  border-collapse: collapse;
+  text-align: left;
+  padding: 5px;
+  background-color: darkolivegreen;
+  color: white;
+}
+
+td {
+  border: 1px solid darkolivegreen;
+  border-collapse: collapse;
+  width: auto;
+  padding: 5px;
+
+}
+
+td:nth-child(2) {
+  width: auto;
+}
+
+td:nth-child(4) {
+  width: auto;
+}
+
+td:nth-child(5) {
+  width: auto;
+}
+
+td:nth-child(6) {
+  width: auto;
+}
+
+td:nth-child(7) {
+  width: auto;
+}
+
+td:nth-child(8) {
+  width: auto;
+}
+
+tr:nth-child(odd) {
+  background-color: lavenderblush;
+}
+
+tr:nth-child(even) {
+  background-color: mintcream;}
