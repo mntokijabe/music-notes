@@ -33,7 +33,6 @@ function SearchPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('buttonValue is: ', buttonValue)
     switch (buttonValue) {
       case 'title':
         dispatch({ type: 'SEARCH_THING',

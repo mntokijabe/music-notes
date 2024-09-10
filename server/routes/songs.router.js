@@ -20,8 +20,6 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id',  async (req, res) => {
-    // let songInfo = [];
-    // let genreInfo = [];
     let connection;
     try {
         connection = await pool.connect()
@@ -74,7 +72,19 @@ router.get('/:id',  async (req, res) => {
  * POST route template
  */
 router.post('/', (req, res) => {
-  // POST route code here
+    console.log('req body is', req.body)
+  const queryText = `
+    INSERT INTO genres_songs
+        ('song_id', 'genre_id')
+        VALUES
+        $1, $2`
+    queryValues = [req.body.songId, Number(req.body.genreId)]
 });
+
+router.put('/', (req, res) => {
+
+
+})
+
 
 module.exports = router;

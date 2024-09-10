@@ -24,6 +24,6 @@ export default function* rootSaga() {
     songs(),
     genreList(),
     voicings(),
-    
+    search(),
   ]);
 }

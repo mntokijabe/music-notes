@@ -31,10 +31,41 @@ function SongEdit () {
 
     console.log('songInfo is: ',songInfo)
     console.log('genreInfo is',genreInfo)
-    const handleEdit = () => {
-
+    const handleEdit = (category) => {
+        switch (category) {
+            case 'title':
+                dispatch({ type: 'EDIT_SONG', payload: {category: category, songId: songId, change: title}})
+                break;
+            case 'composer':
+                dispatch({ type: 'EDIT_SONG', payload: {category: category, songId: songId, change: composer}})
+                break;
+            case 'arranger':
+                dispatch({ type: 'EDIT_SONG', payload: {category: category, songId: songId, change: arranger}})
+                break;
+            case 'voicing':
+                dispatch({ type: 'EDIT_SONG', payload: {category: category, songId: songId, change: voicing}})
+                break;
+            case 'publisher':
+                dispatch({ type: 'EDIT_SONG', payload: {category: category, songId: songId, change: publisher}})
+                break;
+            case 'copyright':
+                dispatch({ type: 'EDIT_SONG', payload: {category: category, songId: songId, change: copyrightDate}})
+                break;
+            case 'copies':
+                dispatch({ type: 'EDIT_SONG', payload: {category: category, songId: songId, change: copies}})
+                break;
+        }
     }
 
+    const handleDelete = (genreId) => {
+        console.log('in handleDelete')
+        dispatch({ type: 'DELETE_SONG_GENRE', payload: {songId: songId, genreId: genreId}})
+    }
+    const handleAdd = (genreId) => {
+        console.log('in handleAdd')
+        genre === '' && alert("you must choose a genre from the dropdown")
+        !genre =='' && dispatch({ type: 'ADD_SONG_GENRE', payload: {songId: songId, genreId: genre}})
+    }
 
     return(
         <Box sx={{ml:5}}>
@@ -44,37 +75,37 @@ function SongEdit () {
                     <tr className="songInfo" style={{height:'60px'}}> 
                         <td style={{width:'100px'}}>Title:</td>
                         <td> <input onChange={(e) => setTitle(e.target.value)} type="text" value={title} /></td>
-                        <td><Button onClick={handleEdit(title)}>Edit</Button></td>
+                        <td><Button onClick={() => handleEdit("title")}>Edit</Button></td>
                     </tr>
-                    <tr style={{height:'30px'}}> 
+                    <tr > 
                         <td>Composer:</td>
                         <td> <input onChange={(e) => setComposer(e.target.value)} type="text" value={composer} /></td>
-                        <td><Button onClick={handleEdit(composer)}>Edit</Button></td>
+                        <td><Button onClick={() => handleEdit("composer")}>Edit</Button></td>
                     </tr>
                     <tr> 
                         <td>Arranged by:</td>
                         <td> <input onChange={(e) => setArranger(e.target.value)} type="text" value={arranger} /></td>
-                        <td><Button onClick={handleEdit(arranger)}>Edit</Button></td>
+                        <td><Button onClick={() => handleEdit("arranger")}>Edit</Button></td>
                     </tr>
                     <tr> 
                         <td>Voicing:</td>
                         <td> <input onChange={(e) => setVoicing(e.target.value)} type="text" value={voicing} /></td>
-                        <td><Button onClick={handleEdit(voicing)}>Edit</Button></td>
+                        <td><Button onClick={() => handleEdit("voicing")}>Edit</Button></td>
                     </tr>
                     <tr> 
                         <td>Publisher:</td>
                         <td> <input onChange={(e) => setPublisher(e.target.value)} type="text" value={publisher} /></td>
-                        <td><Button onClick={handleEdit(publisher)}>Edit</Button></td>
+                        <td><Button onClick={() => handleEdit("publisher")}>Edit</Button></td>
                     </tr>
                     <tr> 
                         <td>Copyright:</td>
                         <td> <input onChange={(e) => setCopyrightDate(e.target.value)} type="text" value={copyrightDate} /></td>
-                        <td><Button onClick={handleEdit(composer)}>Edit</Button></td>
+                        <td><Button onClick={() => handleEdit("copyright")}>Edit</Button></td>
                     </tr>
-                    <tr style={{height:'50px'}}> 
+                    <tr > 
                         <td>Copies on Hand:</td>
                         <td> <input onChange={(e) => setCopies(e.target.value)} type="text" value={copies} /></td>
-                        <td><Button onClick={handleEdit(copies)}>Edit</Button></td>
+                        <td><Button onClick={() => handleEdit("copies")}>Edit</Button></td>
                     </tr>     
                 </tbody>
             </table>
