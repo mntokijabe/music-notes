@@ -18,7 +18,7 @@ function* editSong(action) {
     console.log('payload for edit is', action.payload)
     // try {
 
-    yield axios.put(`/api/songs/${action.payload}`)
+    yield axios.put('/api/songs',action.payload)
     //     yield put({ type: 'SET_SONG_INFO', payload: songInfo})
     // } catch (error) {
     //     console.log('Error getting song info ',error)
@@ -26,10 +26,9 @@ function* editSong(action) {
 }
 
 function* deleteGenre(action) {
-    console.log('payload for deletegenre is', action.payload)
     const songId = action.payload.songId;
     console.log('songId is', songId)
-    // try {
+    try {
 
         yield axios.delete('/api/songs',{params:
             {songId: action.payload.songId,
@@ -38,9 +37,9 @@ function* deleteGenre(action) {
         })
         yield put({ type: 'GET_SONG_INFO', payload: action.payload.songId})
 
-    // } catch (error) {
-    //     console.log('Error getting song info ',error)
-    // }
+    } catch (error) {
+        console.log('Error getting song info ',error)
+    }
 }
 function* addGenre(action) {
     try {

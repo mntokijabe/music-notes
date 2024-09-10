@@ -69,7 +69,7 @@ router.get('/:id',  async (req, res) => {
 
 
 /**
- * POST route template
+ * POST route 
  */
 router.post('/', (req, res) => {
   const queryText = `
@@ -87,6 +87,10 @@ router.post('/', (req, res) => {
     res.sendStatus(500)
    })
 });
+
+/**
+ * DELETE route 
+ */
 router.delete('/', (req, res) => {
     console.log('req.params in delete is ', req.query.songId)
     const queryText = `
@@ -103,9 +107,81 @@ router.delete('/', (req, res) => {
     })
 })
 
+/**
+ * PUT route 
+ */
 
 router.put('/', (req, res) => {
+    const category = req.body.category;
+    let queryText = '';
+    let queryValues = [];
 
+    switch (category) {
+        case 'title':
+            queryText = `
+            UPDATE songs
+            SET title = $1
+            WHERE songs.id = $2`
+            queryValues = [req.body.change, Number(req.body.songId)]
+        break;
+        case 'composer':
+            queryText = `
+            UPDATE songs
+            SET composer = $1
+            WHERE songs.id = $2`
+            queryValues = [req.body.change, Number(req.body.songId)]
+        break;
+        case 'arranger':
+            queryText = `
+            UPDATE songs
+            SET arranged_by = $1
+            WHERE songs.id = $2`
+            queryValues = [req.body.change, Number(req.body.songId)]
+        break;
+        case 'voicing':
+            queryText = `
+            UPDATE songs
+            SET title = $1
+            WHERE songs.id = $2`
+            queryValues = [req.body.change, Number(req.body.songId)]
+        break;
+        case 'title':
+            queryText = `
+            UPDATE songs
+            SET title = $1
+            WHERE songs.id = $2`
+            queryValues = [req.body.change, Number(req.body.songId)]
+        break;
+        case 'title':
+            queryText = `
+            UPDATE songs
+            SET title = $1
+            WHERE songs.id = $2`
+            queryValues = [req.body.change, Number(req.body.songId)]
+        break;
+        case 'title':
+            queryText = `
+            UPDATE songs
+            SET title = $1
+            WHERE songs.id = $2`
+            queryValues = [req.body.change, Number(req.body.songId)]
+        break;
+        case 'title':
+            queryText = `
+            UPDATE songs
+            SET title = $1
+            WHERE songs.id = $2`
+            queryValues = [req.body.change, Number(req.body.songId)]
+        break;
+    }
+    pool.query(queryText, queryValues)
+    .then(response =>{
+        res.sendStatus(200)
+    })
+    .catch(dbErr => {
+        console.log('error editing db ', dbErr)
+        res.sendStatus(500)
+    })
 
 })
 
