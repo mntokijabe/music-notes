@@ -42,7 +42,6 @@ router.get('/:id', (req, res) => {
  * POST route template
  */
 router.post('/', (req, res) => {
-    console.log('req.body is', req.body)
     const queryText = `
         INSERT INTO active_songs
          (ensemble_id, song_id)

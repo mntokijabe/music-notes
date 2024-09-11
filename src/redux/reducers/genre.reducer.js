@@ -1,3 +1,6 @@
+
+// this reducer stores the list of all genres to be displayed
+
 const genreReducer = (state = [], action) => {
     switch (action.type) {
       case 'SET_GENRES':

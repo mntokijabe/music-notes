@@ -14,13 +14,11 @@ router.get('/', (req, res) => {
             queryText = `
                SELECT 
                 songs.title, songs.composer, songs.arranged_by, 
-                voicings.name AS voicing, publishers.name, songs.copyright_year, 
+                voicings.name AS voicing, songs.publisher, songs.copyright_year, 
                 songs.quantity, songs.id
                     FROM songs
                     JOIN voicings
                         ON songs.voicing_id = voicings.id
-                    JOIN publishers
-                        ON songs.publisher_id = publishers.id
                     WHERE LOWER (songs.title) LIKE $1`;
             queryValues = ["%" + data.toLowerCase() +"%"];
                     break;
@@ -28,13 +26,11 @@ router.get('/', (req, res) => {
             queryText = `
                SELECT 
                 songs.title, songs.composer, songs.arranged_by, 
-                voicings.name AS voicing, publishers.name, songs.copyright_year, 
+                voicings.name AS voicing, songs.publisher, songs.copyright_year, 
                 songs.quantity, songs.id
                     FROM songs
                     JOIN voicings
                         ON songs.voicing_id = voicings.id
-                    JOIN publishers
-                        ON songs.publisher_id = publishers.id
                     WHERE LOWER (songs.composer) LIKE $1`;
             queryValues = ["%" + data.toLowerCase() +"%"];
             break;
@@ -42,13 +38,11 @@ router.get('/', (req, res) => {
             queryText = `
                 SELECT 
                 songs.title, songs.composer, songs.arranged_by, 
-                voicings.name AS voicing, publishers.name, songs.copyright_year, 
+                voicings.name AS voicing, songs.publisher, songs.copyright_year, 
                 songs.quantity, songs.id
                     FROM songs
                     JOIN voicings
                         ON songs.voicing_id = voicings.id
-                    JOIN publishers
-                        ON songs.publisher_id = publishers.id
                     WHERE LOWER (songs.arranged_by) LIKE $1`;
             queryValues = ["%" + data.toLowerCase() +"%"];
                     break;
@@ -56,13 +50,11 @@ router.get('/', (req, res) => {
             queryText = `
                 SELECT 
                 songs.title, songs.composer, songs.arranged_by, 
-                voicings.name AS voicing, publishers.name, songs.copyright_year, 
+                voicings.name AS voicing, songs.publisher, songs.copyright_year, 
                 songs.quantity,songs.id
                     FROM songs
                     JOIN voicings
                         ON songs.voicing_id = voicings.id
-                    JOIN publishers
-                        ON songs.publisher_id = publishers.id
                     WHERE voicings.id = $1`;
             queryValues = [data];
             break;
@@ -70,7 +62,7 @@ router.get('/', (req, res) => {
             queryText = `
                SELECT 
                     songs.title, songs.composer, songs.arranged_by, 
-                    voicings.name AS voicing, publishers.name, songs.copyright_year, 
+                    voicings.name AS voicing, songs.publisher, songs.copyright_year, 
                     songs.quantity, genres.genre_name, songs.id
                         FROM genres
                         JOIN genres_songs
@@ -79,8 +71,6 @@ router.get('/', (req, res) => {
                             ON genres_songs.song_id = songs.id
                         JOIN voicings
                             ON songs.voicing_id = voicings.id
-                        JOIN publishers
-                            ON songs.publisher_id = publishers.id
                         WHERE genres.id = $1`;
             queryValues = [data];
             break;

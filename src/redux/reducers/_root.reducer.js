@@ -21,8 +21,8 @@ const rootReducer = combineReducers({
   ensembles,  // list of the ensembles for the school
   activeSongs, // songs the selected ensemble is currently singing
   songInfo,
-  genreInfo,
-  genreList,
+  genreInfo,  // gets the genres of a specific song
+  genreList,  // gets the list of all genres
   voicings,
   searchResults,
 });
