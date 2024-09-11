@@ -4,11 +4,8 @@ import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min
 import { Box, Button, Select, MenuItem, FormControl } from "@mui/material";
 
 function AddSong () {
-    // const params = useParams();
-    // const songId = params.id;
     const dispatch = useDispatch();
-    // const songInfo = useSelector(store => store.songInfo);
-    // const genreInfo = useSelector(store => store.genreInfo)
+    const history = useHistory();
     const genres = useSelector(store => store.genreList)
     const voicings = useSelector(store => store.voicings)
 
@@ -47,7 +44,7 @@ function AddSong () {
                 copyright: copyrightDate,
                 copies: copies,
                 url: url
-            }})
+            },history})
         }
     }
 

@@ -18,7 +18,7 @@ function* editSong(action) {
     console.log('payload for edit is', action.payload)
     // try {
 
-    yield axios.put('/api/songs',action.payload)
+    yield axios.put('/api/edits',action.payload)
     //     yield put({ type: 'SET_SONG_INFO', payload: songInfo})
     // } catch (error) {
     //     console.log('Error getting song info ',error)
@@ -30,7 +30,7 @@ function* deleteGenre(action) {
     console.log('songId is', songId)
     try {
 
-        yield axios.delete('/api/songs',{params:
+        yield axios.delete('/api/edits',{params:
             {songId: action.payload.songId,
              genreId: action.payload.genreId
             }
@@ -44,7 +44,7 @@ function* deleteGenre(action) {
 function* addGenre(action) {
     try {
 
-    yield axios.post('/api/songs',action.payload)
+    yield axios.post('/api/edits',action.payload)
     yield put({ type: 'GET_SONG_INFO', payload: action.payload.songId})
     } catch (error) {
         console.log('Error adding genre ',error)
@@ -54,10 +54,13 @@ function* addGenre(action) {
 function* addNewSong(action) {
     try {
 
-    yield axios.post('/api/songs',action.payload)
-    yield put({ type: 'GET_SONG_INFO', payload: action.payload.songId})
+    const newId = yield axios.post('/api/songs',action.payload)
+    console.log('newId is', newId.data.id)
+    yield put({ type: 'GET_SONG_INFO', payload: newId.data.id})
+    const {history} = action
+    history.push(`/info/${newId.data.id}`)
     } catch (error) {
-        console.log('Error adding genre ',error)
+        console.log('Error adding new song ',error)
     }
 }
 

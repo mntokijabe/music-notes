@@ -5,10 +5,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
-import Grid from '@mui/material/Grid2';
 import { useSelector, useDispatch } from 'react-redux';
-import { LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 function SearchPage() {
@@ -21,7 +18,6 @@ function SearchPage() {
   const [genre, setGenre] = useState('');
   const [voicing, setVoicing] = useState('');
   const [arranger, setArranger] = useState('');
-  const [submissionData, setSubmissionData] = useState({});
 
   useEffect(() => {
     dispatch({ type: 'GET_GENRES' })
