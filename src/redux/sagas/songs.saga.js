@@ -19,6 +19,9 @@ function* editSong(action) {
     // try {
 
     yield axios.put('/api/edits',action.payload)
+    alert(`${action.payload.category} was successfully updated`)
+    const {history} = action
+    history.push(`/info/${action.payload.songId}`)
     //     yield put({ type: 'SET_SONG_INFO', payload: songInfo})
     // } catch (error) {
     //     console.log('Error getting song info ',error)

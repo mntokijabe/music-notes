@@ -1,7 +1,7 @@
 import { useSelector,useDispatch } from "react-redux";
 import { useEffect } from 'react';
 import { useHistory, useParams, Link } from "react-router-dom/cjs/react-router-dom.min";
-import { Box, Button } from "@mui/material";
+import { Box, Button, Container, Paper } from "@mui/material";
 
 
 function SongInfo () {
@@ -18,12 +18,12 @@ function SongInfo () {
         })
     }, [songId])
 
-    console.log('genreInfo is',genreInfo)
     let genres = []
     const makeList= () => {
         for (let genre of genreInfo){
             genres.push(genre.genre_name)
         }}
+    makeList()
     const handleChange = () => {
         activeEnsemble.length > 0 && addSong()
         
@@ -42,10 +42,11 @@ function SongInfo () {
         }
     
     return(
-        <Box sx={{ml:5}}>
+        <Container display="flex" sx={{display: 'flex', flexDirection:'row'}}>
+        <Box sx={{width:"350px"}}>
             <table>
                 <tbody>            
-                    <tr style={{height:'60px'}}> <td style={{width:'100px'}}><h2>Title:</h2></td><td> <h2>{songInfo.title}</h2></td></tr>
+                    <tr style={{height:'60px'}}> <td style={{width:'100px'}}><h2>Title:</h2></td><td style={{width:'200px'}}> <h2>{songInfo.title}</h2></td></tr>
                     <tr style={{height:'30px'}}> <td style={{width:'100px'}}>Composer:</td><td>{songInfo.composer}</td></tr>
                     <tr style={{height:'30px'}}> <td>Arranged by:</td><td>{songInfo.arranged_by}</td></tr>
                     <tr style={{height:'30px'}}> <td>Voicing:</td><td>{songInfo.voicing}</td></tr>
@@ -56,16 +57,22 @@ function SongInfo () {
                 </tbody>
             </table>
 
-            <Box>
-            <Button component={Link} to={`/edit/${songInfo.id}`} variant="contained">Edit Info</Button>
-            <Button component={Link} to={`/newnote/${songInfo.id}`} variant="contained">Add Performance Note</Button>
-            <Button onClick={handleChange} variant="contained">Add to Repertoire</Button>
+            <Box sx={{display: 'flex', gap:1, marginTop:"40px"}}>
+            <Button component={Link} to={`/edit/${songInfo.id}`} 
+                variant="contained" sx={{width:"100px", textAlign: 'center'}}>Edit Info</Button>
+            <Button component={Link} to={`/newnote/${songInfo.id}`} 
+                variant="contained" sx={{width:"100px", textAlign: 'center'}}>Add Performance Note</Button>
+            <Button onClick={handleChange} 
+                variant="contained" sx={{width:"100px", textAlign: 'center'}}>Add to Repertoire</Button>
             </Box>
 
         
          
         </Box>
-
+        <Paper sx={{marginLeft:"30px"}}>
+            <img src={songInfo.image_url} style={{height:"400px"}}></img>
+        </Paper>
+        </Container>
     )
 
 }

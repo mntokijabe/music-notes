@@ -28,7 +28,7 @@ router.get('/:id',  async (req, res) => {
                 SELECT 
                 songs.title, songs.composer, songs.arranged_by, 
                 voicings.name AS voicing, songs.publisher, songs.copyright_year, 
-                songs.quantity, songs.id
+                songs.quantity, songs.id, songs.image_url
                     FROM songs
                     JOIN voicings
                         ON songs.voicing_id = voicings.id

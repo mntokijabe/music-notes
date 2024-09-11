@@ -44,9 +44,6 @@ function SearchPage() {
           payload: { category: 'genre', data: genre}, 
           history })
         break;
-      // axios request, catch data, set global state with that data,
-      // const {history} = action.payload
-      // history.push('/nextpage')
       case 'arranger':
         dispatch({ type: 'SEARCH_THING',
           payload: { category: 'arranger', data: arranger },

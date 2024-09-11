@@ -41,6 +41,7 @@ router.post('/', (req, res) => {
 info. The genres are done separately
 */
 router.put('/', (req, res) => {
+    console.log('req.body is',req.body)
     const category = req.body.category;
     let queryText = '';
     let queryValues = [];

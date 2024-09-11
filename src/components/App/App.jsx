@@ -4,7 +4,6 @@ import {
   Redirect,
   Route,
   Switch,
-  BrowserRouter,
 } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Container, Grid, Paper } from '@mui/material';
