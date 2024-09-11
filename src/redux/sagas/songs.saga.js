@@ -51,11 +51,22 @@ function* addGenre(action) {
     }
 }
 
+function* addNewSong(action) {
+    try {
+
+    yield axios.post('/api/songs',action.payload)
+    yield put({ type: 'GET_SONG_INFO', payload: action.payload.songId})
+    } catch (error) {
+        console.log('Error adding genre ',error)
+    }
+}
+
 function* songs() {
   yield takeLatest('GET_SONG_INFO', fetchSongInfo);
   yield takeLatest('EDIT_SONG', editSong);
   yield takeLatest('DELETE_SONG_GENRE', deleteGenre)
   yield takeLatest('ADD_SONG_GENRE', addGenre)
+  yield takeLatest('ADD_NEW_SONG', addNewSong)
 }
 
 export default songs;

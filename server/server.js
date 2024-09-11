@@ -14,6 +14,7 @@ const songsRouter = require('./routes/songs.router');
 const genresRouter = require('./routes/genres.router');
 const voicingRouter = require('./routes/voicings.router');
 const searchRouter = require('./routes/search.router')
+const editsRouter = require('./routes/edits.router');
 
 // Express Middleware
 app.use(express.json());
@@ -34,6 +35,7 @@ app.use('/api/songs', songsRouter);
 app.use('/api/genres', genresRouter);
 app.use('/api/voicings', voicingRouter)
 app.use('/api/search', searchRouter);
+app.use('/api/edits', editsRouter);
 
 // Listen Server & Port
 app.listen(PORT, () => {
