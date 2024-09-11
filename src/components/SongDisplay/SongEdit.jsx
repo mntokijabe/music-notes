@@ -163,7 +163,7 @@ function SongEdit () {
         <Paper elevation='0' sx={{marginLeft:"30px", justifyContent:"center"}}>
             Image URL: <input onChange={(e) => setUrl(e.target.value)} type="text" value={url} />
             <br></br>
-            <Button onClick={() => handleEdit("url")} variant="outlined" >Submit</Button>
+            <Button onClick={() => handleEdit("url")} variant="outlined" sx={{marginLeft:"100px"}} >Submit</Button>
             <p></p>
             <Paper sx={{justifyContent:"center"}}>
                 <img src={songInfo.image_url} style={{height:"300px"}}></img>

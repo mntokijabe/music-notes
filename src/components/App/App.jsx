@@ -21,7 +21,6 @@ import SongInfo from '../SongDisplay/SongInfo';
 import SongEdit from '../SongDisplay/SongEdit';
 import AddSong from '../SongDisplay/AddSong';
 import ViewNotes from '../Performances/ViewNotes';
-import AddNotes from '../Performances/AddNotes';
 import Scheduler from '../Calendar/Scheduler';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
@@ -82,13 +81,10 @@ function App() {
               <AddSong />
             </ProtectedRoute>
 
-            <ProtectedRoute exact path="/viewnotes/:id">
+            <ProtectedRoute exact path="/notes/:id">
               <ViewNotes />
             </ProtectedRoute>
 
-            <ProtectedRoute exact path="/newnote/:id">
-              <AddNotes />
-            </ProtectedRoute>
 
             <ProtectedRoute exact path="/calendar">
               <Scheduler />

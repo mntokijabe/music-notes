@@ -4,7 +4,6 @@ import { put, takeLatest } from 'redux-saga/effects';
 
 
 function* fetchSongInfo(action) {
-    console.log('payload is', action.payload)
     try {
 
         const songInfo = yield axios.get(`/api/songs/${action.payload}`)

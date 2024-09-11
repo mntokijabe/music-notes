@@ -60,8 +60,8 @@ function SongInfo () {
             <Box sx={{display: 'flex', gap:1, marginTop:"40px"}}>
             <Button component={Link} to={`/edit/${songInfo.id}`} 
                 variant="contained" sx={{width:"100px", textAlign: 'center'}}>Edit Info</Button>
-            <Button component={Link} to={`/newnote/${songInfo.id}`} 
-                variant="contained" sx={{width:"100px", textAlign: 'center'}}>Add Performance Note</Button>
+            <Button component={Link} to={`/notes/${songInfo.id}`} 
+                variant="contained" sx={{width:"100px", textAlign: 'center'}}>View or Post Performance Notes</Button>
             <Button onClick={handleChange} 
                 variant="contained" sx={{width:"100px", textAlign: 'center'}}>Add to Repertoire</Button>
             </Box>

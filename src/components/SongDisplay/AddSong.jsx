@@ -120,47 +120,14 @@ function AddSong () {
                     </tr>    
                 </tbody>
             </table>
-            <Box sx={{marginTop:"20px"}}><h3>Recheck all entries then click Submit</h3> <Button type="submit" variant="contained" size="large">Submit</Button></Box>
-            </form>
-            {/* <Box>
-                <h3> Genre Edits </h3>
-                    <table>
-                        <tbody>
-
-                            {genreInfo.map((thisgenre) => (
-                             <tr>                               
-                                <td>{thisgenre.genre_name}</td>
-                                <td><Button onClick={() => handleDelete(thisgenre.genre_id)} >delete</Button></td>
-                            </tr>                         
-                            ))}
-                            <tr><td>Add genre</td>
-                            <td>
-                                <Select
-                                    value={genre}
-                                    onChange={(e) => setGenre(e.target.value)} type="text"
-                                >
-                                    {genres.map((genrelist) => (
-                                    <MenuItem value={genrelist.id} >{genrelist.genre_name} </MenuItem>
-                                    ))}
-                                </Select>
-                            </td>
-                            <td><Button onClick={() => handleAdd()}>Submit</Button>
-                            </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                
-            </Box> */}
-
-            
-     
-
-        
-         
+            <Box sx={{marginTop:"20px"}}>
+                <h3>Recheck all entries then click Submit 
+                <Button type="submit" variant="contained" size="large" sx={{marginLeft:"60px"}}>Submit</Button>
+                </h3>
+            </Box>
+            </form>         
         </Box>
-
     )
-
 }
 
 export default AddSong;
