@@ -27,13 +27,11 @@ router.get('/:id',  async (req, res) => {
             const querySongsText = `
                 SELECT 
                 songs.title, songs.composer, songs.arranged_by, 
-                voicings.name AS voicing, publishers.name, songs.copyright_year, 
+                voicings.name AS voicing, songs.publisher, songs.copyright_year, 
                 songs.quantity, songs.id
                     FROM songs
                     JOIN voicings
                         ON songs.voicing_id = voicings.id
-                    JOIN publishers
-                        ON songs.publisher_id = publishers.id
                     WHERE songs.id = $1;`
             
             const queryGenreText = `
@@ -141,35 +139,35 @@ router.put('/', (req, res) => {
         case 'voicing':
             queryText = `
             UPDATE songs
-            SET title = $1
+            SET voicing_id = $1
             WHERE songs.id = $2`
             queryValues = [req.body.change, Number(req.body.songId)]
         break;
-        case 'title':
+        case 'publisher':
             queryText = `
             UPDATE songs
-            SET title = $1
+            SET publisher = $1
             WHERE songs.id = $2`
             queryValues = [req.body.change, Number(req.body.songId)]
         break;
-        case 'title':
+        case 'copyright':
             queryText = `
             UPDATE songs
-            SET title = $1
+            SET copyright_year = $1
             WHERE songs.id = $2`
             queryValues = [req.body.change, Number(req.body.songId)]
         break;
-        case 'title':
+        case 'copies':
             queryText = `
             UPDATE songs
-            SET title = $1
+            SET quantity = $1
             WHERE songs.id = $2`
             queryValues = [req.body.change, Number(req.body.songId)]
         break;
-        case 'title':
+        case 'url':
             queryText = `
             UPDATE songs
-            SET title = $1
+            SET image_url = $1
             WHERE songs.id = $2`
             queryValues = [req.body.change, Number(req.body.songId)]
         break;

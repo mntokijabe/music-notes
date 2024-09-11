@@ -50,7 +50,7 @@ function SongInfo () {
                     <tr style={{height:'30px'}}> <td>Arranged by:</td><td>{songInfo.arranged_by}</td></tr>
                     <tr style={{height:'30px'}}> <td>Voicing:</td><td>{songInfo.voicing}</td></tr>
                     <tr style={{height:'30px'}}> <td>Genre:</td><td>{...genres.join(", ")}</td></tr>
-                    <tr style={{height:'30px'}}> <td>Publisher:</td><td>{songInfo.name}</td></tr>
+                    <tr style={{height:'30px'}}> <td>Publisher:</td><td>{songInfo.publisher}</td></tr>
                     <tr style={{height:'30px'}}> <td>Copyright:</td><td>{songInfo.copyright_year}</td></tr>
                     <tr style={{height:'50px'}}> <td>Copies on Hand:</td><td>{songInfo.quantity}</td></tr>     
                 </tbody>

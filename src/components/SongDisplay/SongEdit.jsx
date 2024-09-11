@@ -10,13 +10,15 @@ function SongEdit () {
     const songInfo = useSelector(store => store.songInfo);
     const genreInfo = useSelector(store => store.genreInfo)
     const genres = useSelector(store => store.genreList)
+    const voicings = useSelector(store => store.voicings)
+
 
     let [title, setTitle] = useState(songInfo.title)
     let [composer, setComposer] = useState(songInfo.composer)
     let [arranger, setArranger] = useState(songInfo.arranged_by)
-    let [voicing, setVoicing] = useState(songInfo.voicing)
+    let [newVoicing, setNewVoicing] = useState('')
     let [genre, setGenre] = useState('')
-    let [publisher, setPublisher] = useState(songInfo.name)
+    let [publisher, setPublisher] = useState(songInfo.publisher)
     let [copyrightDate, setCopyrightDate] = useState(songInfo.copyright_year)
     let [copies, setCopies] = useState(songInfo.quantity)
 
@@ -27,6 +29,9 @@ function SongEdit () {
     }, [songId])
     useEffect(() => {
         dispatch({ type: 'GET_GENRES' })
+      }, []);
+      useEffect(() => {
+        dispatch({ type: 'GET_VOICINGS' })
       }, []);
 
     console.log('songInfo is: ',songInfo)
@@ -43,7 +48,7 @@ function SongEdit () {
                 dispatch({ type: 'EDIT_SONG', payload: {category: category, songId: songId, change: arranger}})
                 break;
             case 'voicing':
-                dispatch({ type: 'EDIT_SONG', payload: {category: category, songId: songId, change: voicing}})
+                dispatch({ type: 'EDIT_SONG', payload: {category: category, songId: songId, change: newVoicing}})
                 break;
             case 'publisher':
                 dispatch({ type: 'EDIT_SONG', payload: {category: category, songId: songId, change: publisher}})
@@ -70,42 +75,51 @@ function SongEdit () {
     return(
         <Box sx={{ml:5}}>
             <h3>Main Data edits</h3>
+            <h4>Make desired change, then click Submit</h4>
             <table>
                 <tbody className="songInfo">            
                     <tr className="songInfo" style={{height:'60px'}}> 
                         <td style={{width:'100px'}}>Title:</td>
                         <td> <input onChange={(e) => setTitle(e.target.value)} type="text" value={title} /></td>
-                        <td><Button onClick={() => handleEdit("title")}>Edit</Button></td>
+                        <td><Button onClick={() => handleEdit("title")}>Submit</Button></td>
                     </tr>
                     <tr > 
                         <td>Composer:</td>
                         <td> <input onChange={(e) => setComposer(e.target.value)} type="text" value={composer} /></td>
-                        <td><Button onClick={() => handleEdit("composer")}>Edit</Button></td>
+                        <td><Button onClick={() => handleEdit("composer")}>Submit</Button></td>
                     </tr>
                     <tr> 
                         <td>Arranged by:</td>
                         <td> <input onChange={(e) => setArranger(e.target.value)} type="text" value={arranger} /></td>
-                        <td><Button onClick={() => handleEdit("arranger")}>Edit</Button></td>
+                        <td><Button onClick={() => handleEdit("arranger")}>Submit</Button></td>
                     </tr>
                     <tr> 
                         <td>Voicing:</td>
-                        <td> <input onChange={(e) => setVoicing(e.target.value)} type="text" value={voicing} /></td>
-                        <td><Button onClick={() => handleEdit("voicing")}>Edit</Button></td>
+                        <td> <Select sx={{width:"100px", marginRight:"20px"}}
+                        value={newVoicing}
+                        onChange={(e) => setNewVoicing(e.target.value)}
+                    >
+                        {voicings.map((voice) => (
+                        <MenuItem key={voice.id} value={voice.id} >{voice.name} </MenuItem>
+                        ))}
+                    </Select> Currently {songInfo.voicing}</td>
+                        <td><Button onClick={() => handleEdit("voicing")}>Submit</Button></td>
+                                
                     </tr>
                     <tr> 
                         <td>Publisher:</td>
                         <td> <input onChange={(e) => setPublisher(e.target.value)} type="text" value={publisher} /></td>
-                        <td><Button onClick={() => handleEdit("publisher")}>Edit</Button></td>
+                        <td><Button onClick={() => handleEdit("publisher")}>Submit</Button></td>
                     </tr>
                     <tr> 
                         <td>Copyright:</td>
                         <td> <input onChange={(e) => setCopyrightDate(e.target.value)} type="text" value={copyrightDate} /></td>
-                        <td><Button onClick={() => handleEdit("copyright")}>Edit</Button></td>
+                        <td><Button onClick={() => handleEdit("copyright")}>Submit</Button></td>
                     </tr>
                     <tr > 
                         <td>Copies on Hand:</td>
                         <td> <input onChange={(e) => setCopies(e.target.value)} type="text" value={copies} /></td>
-                        <td><Button onClick={() => handleEdit("copies")}>Edit</Button></td>
+                        <td><Button onClick={() => handleEdit("copies")}>Submit</Button></td>
                     </tr>     
                 </tbody>
             </table>
