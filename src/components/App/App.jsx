@@ -22,6 +22,7 @@ import SongEdit from '../SongDisplay/SongEdit';
 import AddSong from '../SongDisplay/AddSong';
 import ViewNotes from '../Performances/ViewNotes';
 import Scheduler from '../Calendar/Scheduler';
+import Calendar from '../Calendar/Calendar';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
@@ -87,7 +88,7 @@ function App() {
 
 
             <ProtectedRoute exact path="/calendar">
-              <Scheduler />
+              <Calendar />
             </ProtectedRoute>
 
 
