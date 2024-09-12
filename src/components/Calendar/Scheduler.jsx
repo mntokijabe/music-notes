@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { gapi } from 'gapi-script';
 
-const CLIENT_ID = '577172681111-0snmr40allqkqe17t8a00b1oj3c7qmeo.apps.googleusercontent.com'; // Replace with your client ID
-const API_KEY = 'AIzaSyATUXoxPTDmKLICxF4gt4fSnaFm91f4A8g'; // Replace with your API key
-const DISCOVERY_DOCS = ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'];
-const SCOPES = 'https://www.googleapis.com/auth/calendar.events';
 
 const GoogleCalendar = () => {
   const [isSignedIn, setIsSignedIn] = useState(false);
