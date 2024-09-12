@@ -1,12 +1,13 @@
 import { useSelector,useDispatch } from "react-redux";
 import { useEffect, useState } from 'react';
-import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
-import { Box, Button, Select, MenuItem } from "@mui/material";
+import { useHistory, useParams, Link } from "react-router-dom/cjs/react-router-dom.min";
+import { Box, Button, Select, MenuItem, Container, Paper } from "@mui/material";
 
 function SongEdit () {
     const params = useParams();
     const songId = params.id;
     const dispatch = useDispatch();
+    const history = useHistory();
     const songInfo = useSelector(store => store.songInfo);
     const genreInfo = useSelector(store => store.genreInfo)
     const genres = useSelector(store => store.genreList)
@@ -21,6 +22,7 @@ function SongEdit () {
     let [publisher, setPublisher] = useState(songInfo.publisher)
     let [copyrightDate, setCopyrightDate] = useState(songInfo.copyright_year)
     let [copies, setCopies] = useState(songInfo.quantity)
+    let [url, setUrl]= useState(songInfo.image_url)
 
     useEffect(() =>{
         dispatch({
@@ -34,30 +36,32 @@ function SongEdit () {
         dispatch({ type: 'GET_VOICINGS' })
       }, []);
 
-    console.log('songInfo is: ',songInfo)
-    console.log('genreInfo is',genreInfo)
+
     const handleEdit = (category) => {
         switch (category) {
             case 'title':
-                dispatch({ type: 'EDIT_SONG', payload: {category: category, songId: songId, change: title}})
+                dispatch({ type: 'EDIT_SONG', payload: {category: category, songId: songId, change: title}, history})
                 break;
             case 'composer':
-                dispatch({ type: 'EDIT_SONG', payload: {category: category, songId: songId, change: composer}})
+                dispatch({ type: 'EDIT_SONG', payload: {category: category, songId: songId, change: composer}, history})
                 break;
             case 'arranger':
-                dispatch({ type: 'EDIT_SONG', payload: {category: category, songId: songId, change: arranger}})
+                dispatch({ type: 'EDIT_SONG', payload: {category: category, songId: songId, change: arranger}, history})
                 break;
             case 'voicing':
-                dispatch({ type: 'EDIT_SONG', payload: {category: category, songId: songId, change: newVoicing}})
+                dispatch({ type: 'EDIT_SONG', payload: {category: category, songId: songId, change: newVoicing}, history})
                 break;
             case 'publisher':
-                dispatch({ type: 'EDIT_SONG', payload: {category: category, songId: songId, change: publisher}})
+                dispatch({ type: 'EDIT_SONG', payload: {category: category, songId: songId, change: publisher}, history})
                 break;
             case 'copyright':
-                dispatch({ type: 'EDIT_SONG', payload: {category: category, songId: songId, change: copyrightDate}})
+                dispatch({ type: 'EDIT_SONG', payload: {category: category, songId: songId, change: copyrightDate}, history})
                 break;
             case 'copies':
-                dispatch({ type: 'EDIT_SONG', payload: {category: category, songId: songId, change: copies}})
+                dispatch({ type: 'EDIT_SONG', payload: {category: category, songId: songId, change: copies}, history})
+                break;
+            case 'url':
+                dispatch({ type: 'EDIT_SONG', payload: {category: category, songId: songId, change: url}, history})
                 break;
         }
     }
@@ -73,7 +77,8 @@ function SongEdit () {
     }
 
     return(
-        <Box sx={{ml:5}}>
+        <Container display="flex" sx={{display: 'flex', flexDirection:'row'}}>
+        <Box >
             <h3>Main Data edits</h3>
             <h4>Make desired change, then click Submit</h4>
             <table>
@@ -151,15 +156,20 @@ function SongEdit () {
                         </tbody>
                     </table>
                 
-            </Box>
-
-            
-     
-
-        
-         
+            </Box>         
         </Box>
 
+        <Paper elevation='0' sx={{marginLeft:"30px", justifyContent:"center"}}>
+            Image URL: <input onChange={(e) => setUrl(e.target.value)} type="text" value={url} />
+            <br></br>
+            <Button onClick={() => handleEdit("url")} variant="outlined" sx={{marginLeft:"100px"}} >Submit</Button>
+            <p></p>
+            <Paper sx={{justifyContent:"center"}}>
+                <img src={songInfo.image_url} style={{height:"300px"}}></img>
+            </Paper>
+            <Button sx={{marginTop:"150px"}}  component={Link} to={`/info/${songId}`} variant="contained">Cancel Editing</Button>
+        </Paper>
+       </Container> 
     )
 
 }

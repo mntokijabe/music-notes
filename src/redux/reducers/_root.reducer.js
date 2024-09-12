@@ -8,6 +8,7 @@ import genreInfo from './genreInfo.reducer';
 import genreList from './genre.reducer';
 import voicings from './voice.reducer';
 import searchResults from './search.reducer';
+import notes from './notes.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   genreList,  // gets the list of all genres
   voicings,
   searchResults,
+  notes,
 });
 
 export default rootReducer;

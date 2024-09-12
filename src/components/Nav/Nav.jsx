@@ -7,7 +7,7 @@ import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
 
 function Nav() {
   const user = useSelector((store) => store.user);
-
+  console.log('user values are ', user)
   return (
     <Box className="nav" >
         {/* If no user is logged in, show these links */}
@@ -19,15 +19,25 @@ function Nav() {
         )}
 
         {/* If a user is logged in, show these links */}
-        {user.id && (
+        {(user.id && user.admin == false) && (
+          <>
+            <Button component={Link} to="/user" variant="contained">Search Library</Button>
+
+            <Button component={Link} to="/calendar" variant="contained">Calendar</Button>
+            <h3>Welcome, {user.username}</h3>
+            <LogOutButton className="navLink" />
+          </>
+        )}
+        {(user.id && user.admin==true) && (
           <>
             <Button component={Link} to="/user" variant="contained">Search Library</Button>
             <Button component={Link} to="/addsong" variant="contained">Add Music</Button>
             <Button component={Link} to="/calendar" variant="contained">Calendar</Button>
-            Welcome, {user.name}
+            <h3>Welcome, {user.username}</h3>
             <LogOutButton className="navLink" />
           </>
         )}
+
         <Link className="navLink" to="/about">
           About
         </Link>

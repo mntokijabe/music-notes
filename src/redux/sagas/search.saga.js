@@ -1,12 +1,9 @@
 import axios from "axios";
 import { takeLatest, put } from "redux-saga/effects";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 
 function* searchThing(action) {
     const category =  action.payload.category
-    console.log('in searchthing saga')
-    // const history = useHistory();
     try{
         const searchResults = yield axios.get('/api/search', 
             {params:{

@@ -1,8 +1,10 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const { rejectNonAdmin, rejectUnauthenticated } = require('../modules/authentication-middleware');
 
 
+// Getting the list of ensembles
 router.get('/', (req, res) => {
   const queryText = `
     SELECT * FROM "ensembles"
@@ -17,7 +19,7 @@ router.get('/', (req, res) => {
         res.sendStatus(500)
     })
 });
-
+// Gets the list of active songs for a specific ensemble
 router.get('/:id', (req, res) => {
     const queryText = `
         SELECT songs.title, active_songs.song_id, ensembles.name, active_songs.ensemble_id FROM songs
@@ -41,7 +43,8 @@ router.get('/:id', (req, res) => {
 /**
  * POST route template
  */
-router.post('/', (req, res) => {
+// Adds a song to the active list for an ensemble
+router.post('/', rejectNonAdmin, rejectUnauthenticated, (req, res) => {
     const queryText = `
         INSERT INTO active_songs
          (ensemble_id, song_id)

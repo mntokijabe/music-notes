@@ -20,20 +20,20 @@ function Sidebar() {
         setChoralGroup(e.target.value) 
         dispatch({ type: 'GET_ACTIVE_SONGS', payload: e.target.value})
     }
-
+    
   return (
     
     <Box
       variant="permanent"
-      sx={{width: 180, flexShrink: 0, marginLeft:-3, marginRight:2, '& .MuiBox-paper': { width: 1800, boxSizing: 'border-box' }, bgcolor:'lightgray'}}
+      sx={{padding: "15px",width: 180, flexShrink: 0, marginLeft:-3, marginRight:2, '& .MuiBox-paper': { width: 1800, boxSizing: 'border-box' }, bgcolor:'lightgray'}}
     >
-        <h3>Select Choir</h3>
-        <Select
+        <h3 >Select Choir</h3>
+        <Select sx={{ml:"15px"}}
         value={choralGroup}
         onChange={(e) => {handleSelect(e)}}
         >
         {ensembles.map((ensemble) => (
-        <MenuItem value={ensemble.id} >{ensemble.name} </MenuItem>
+        <MenuItem key={ensemble.id} value={ensemble.id} >{ensemble.name} </MenuItem>
         ))}
         </Select>
         <p></p>
@@ -41,11 +41,11 @@ function Sidebar() {
 
       <List  sx={{mt:'4rem'}}>
         This group is currently singing:
-      {activeSongs.map((song) => (
-        <ListItem key={song.id} component={Link} to={`/info/${song.song_id}`} >
-            <ListItemText primary={song.title} />
-        </ListItem>
-        ))}
+        {activeSongs.map((song) => (
+          <ListItem key={song.song_id} component={Link} to={`/info/${song.song_id}`} >
+              <ListItemText primary={song.title} />
+          </ListItem>
+          ))}
       </List>
     </Box>
 
