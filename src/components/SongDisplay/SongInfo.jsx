@@ -11,6 +11,7 @@ function SongInfo () {
     const songInfo = useSelector(store => store.songInfo);
     const genreInfo = useSelector(store => store.genreInfo)
     const activeEnsemble = useSelector(store => store.activeSongs)
+    const user = useSelector(store => store.user)
 
     useEffect(() =>{
         dispatch({
@@ -56,16 +57,18 @@ function SongInfo () {
                     <tr style={{height:'50px'}}> <td>Copies on Hand:</td><td>{songInfo.quantity}</td></tr>     
                 </tbody>
             </table>
-
+            { user.admin === true &&
             <Box sx={{display: 'flex', gap:1, marginTop:"40px"}}>
-            <Button component={Link} to={`/edit/${songInfo.id}`} 
-                variant="contained" sx={{width:"100px", textAlign: 'center'}}>Edit Info</Button>
-            <Button component={Link} to={`/notes/${songInfo.id}`} 
-                variant="contained" sx={{width:"100px", textAlign: 'center'}}>View or Post Performance Notes</Button>
-            <Button onClick={handleChange} 
-                variant="contained" sx={{width:"100px", textAlign: 'center'}}>Add to Repertoire</Button>
-            </Box>
-
+                <Button component={Link} to={`/edit/${songInfo.id}`} 
+                    variant="contained" sx={{width:"100px", textAlign: 'center'}}>Edit Info</Button>
+                <Button component={Link} to={`/notes/${songInfo.id}`} 
+                    variant="contained" sx={{width:"100px", textAlign: 'center'}}>View or Post Performance Notes</Button>
+                <Button onClick={handleChange} 
+                    variant="contained" sx={{width:"100px", textAlign: 'center'}}>Add to Repertoire</Button>
+            </Box>}
+            { user.admin === false &&
+            <Button component={Link} to="/user" 
+                variant="contained" sx={{width:"150px", textAlign: 'center', mt:"30px", ml:"80px"}}>Return to Search Page </Button>}
         
          
         </Box>

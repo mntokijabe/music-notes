@@ -66,11 +66,12 @@ function SearchPage() {
 
 
   return (
-    <Paper style={{ flex: 1, padding: 16 }}>
+    <Paper elevation='0'  style={{ flex: 1, padding: 16 }}>
       <Box component="form" onSubmit={handleSubmit}>
         <FormControl column>
           <FormLabel id="demo-radio-buttons-group-label"><h2>Search Music Library By</h2></FormLabel>
-          <RadioGroup
+          Select a radio button, then enter the search value <p></p>
+          <RadioGroup 
             aria-labelledby="demo-radio-buttons-group-label"
             defaultValue="Title"
             name="radio-buttons-group"
@@ -78,19 +79,19 @@ function SearchPage() {
           >
             <Box sx={{ height: '60px' }}>
               <FormControlLabel value="title" control={<Radio />} label="Title" />
-              <input onChange={(e) => setTitle(e.target.value)} type="text" value={title} />
+              <input style={{marginLeft:"42px"}} onChange={(e) => setTitle(e.target.value)} type="text" value={title} />
             </Box>
             <Box sx={{ height: '60px' }}>
               <FormControlLabel value="composer" control={<Radio />} label="Composer" />
-              <input className="inputBox" onChange={(e) => setComposer(e.target.value)} type="text" value={composer} />
+              <input style={{marginLeft:"9px"}} onChange={(e) => setComposer(e.target.value)} type="text" value={composer} />
             </Box>
             <Box sx={{ height: '60px' }}>
               <FormControlLabel value="arranger" control={<Radio />} label="Arranger" />
-              <input onChange={(e) => setArranger(e.target.value)} type="text" value={arranger} />
+              <input style={{marginLeft:"18px"}}onChange={(e) => setArranger(e.target.value)} type="text" value={arranger} />
             </Box>
             <Box sx={{ height: '60px' }}>
               <FormControlLabel value="genre" control={<Radio />} label="Genre" />
-              <Select
+              <Select sx={{width:"180px", ml:"31px", height:"30px"}}
                 value={genre}
                 onChange={(e) => setGenre(e.target.value)} type="text"
               >
@@ -101,7 +102,7 @@ function SearchPage() {
             </Box>
             <Box sx={{ height: '60px' }}>
               <FormControlLabel value="voicing" control={<Radio />} label="Voicing" />
-              <Select
+              <Select sx={{width:"180px", ml:"25px", height:"30px"}}
                 value={voicing}
                 onChange={(e) => setVoicing(e.target.value)}
               >
@@ -111,20 +112,13 @@ function SearchPage() {
               </Select>
             </Box>
           </RadioGroup>
-        </FormControl>
-        <Button type="submit" variant="contained" color="primary">
-          Submit
+         <Button type="submit" variant="contained" color="primary" sx={{mt:"15px", ml:"120px", width:"100px"}}>
+          Submit Seach
         </Button>
+        </FormControl>
+       
       </Box>
 
-
-
-
-
-      {/* <Typography variant="h4">Main Content Area</Typography>
-      <Typography variant="body1">
-        This is where the main content will go.
-      </Typography> */}
     </Paper>
   );
 }

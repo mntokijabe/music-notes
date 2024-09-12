@@ -36,8 +36,7 @@ function SongEdit () {
         dispatch({ type: 'GET_VOICINGS' })
       }, []);
 
-    console.log('songInfo is: ',songInfo)
-    console.log('genreInfo is',genreInfo)
+
     const handleEdit = (category) => {
         switch (category) {
             case 'title':

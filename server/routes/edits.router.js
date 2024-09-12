@@ -1,5 +1,6 @@
 const express = require('express');
 const pool = require('../modules/pool');
+const { rejectNonAdmin, rejectUnauthenticated } = require('../modules/authentication-middleware');
 const router = express.Router();
 
 /**
@@ -14,7 +15,7 @@ router.get('/', (req, res) => {
  */
 
 // This is for adding a genre to a song
-router.post('/', (req, res) => {
+router.post('/', rejectNonAdmin, rejectUnauthenticated, (req, res) => {
     const queryText = `
       INSERT INTO genres_songs
           (song_id, genre_id)
@@ -40,7 +41,7 @@ router.post('/', (req, res) => {
 /* This put route is for updating individual pieces of song
 info. The genres are done separately
 */
-router.put('/', (req, res) => {
+router.put('/', rejectNonAdmin, rejectUnauthenticated, (req, res) => {
     console.log('req.body is',req.body)
     const category = req.body.category;
     let queryText = '';
@@ -120,7 +121,7 @@ router.put('/', (req, res) => {
  */
 
 // This deletes a genre from a specific song
-router.delete('/', (req, res) => {
+router.delete('/', rejectNonAdmin, rejectUnauthenticated, (req, res) => {
     console.log('req.params in delete is ', req.query.songId)
     const queryText = `
         DELETE FROM genres_songs

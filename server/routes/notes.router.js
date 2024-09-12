@@ -1,9 +1,11 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const { rejectNonAdmin, rejectUnauthenticated } = require('../modules/authentication-middleware');
 
+// GETS the previous notes about a song
 
-router.get('/:id', (req, res) => {
+router.get('/:id', rejectNonAdmin, rejectUnauthenticated, (req, res) => {
   const queryText = `
     SELECT performances_songs.song_notes, TO_CHAR(performances.date, 'MM-DD-YY') AS date, performances.description, ensembles.name, songs.title  FROM performances
       JOIN performances_songs
@@ -26,28 +28,15 @@ router.get('/:id', (req, res) => {
     })
 });
 
-// router.get('/:id', (req, res) => {
-//     const queryText = `
-//         SELECT songs.title, active_songs.id FROM songs
-//   	        JOIN active_songs
-//   		    ON active_songs.song_id = songs.id
-//   	        WHERE active_songs.ensemble_id = $1;`
-//     const queryValues = [req.params.id]
-//     pool.query(queryText, queryValues)
-//     .then(result => {
-//         res.send(result.rows);
-//     }) 
-//     .catch(err => {
-//         console.log('dbError getting list of active songs ',err)
-//         res.sendStatus(500)
-//     })
-// })
 
 
 /**
- * POST route template
+ * POST route 
  */
-router.post('/', async (req, res) => {
+// Posts a performance note, first to performances date/description
+//   then to performances_songs with the actual note
+
+router.post('/', rejectNonAdmin, rejectUnauthenticated, async (req, res) => {
     const performance = req.body;
     let connection;
     try {

@@ -1,9 +1,12 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const { rejectNonAdmin, rejectUnauthenticated } = require('../modules/authentication-middleware');
 
 
-router.get('/', (req, res) => {
+// GETS the list of items based upon a particular search category
+
+router.get('/', rejectUnauthenticated, (req, res) => {
     const {category, data} = req.query;
 
     let queryText;
@@ -22,7 +25,7 @@ router.get('/', (req, res) => {
                     WHERE LOWER (songs.title) LIKE $1`;
             queryValues = ["%" + data.toLowerCase() +"%"];
                     break;
-        case 'composer':
+        case 'composer':   // query for searching by composer
             queryText = `
                SELECT 
                 songs.title, songs.composer, songs.arranged_by, 
@@ -34,7 +37,7 @@ router.get('/', (req, res) => {
                     WHERE LOWER (songs.composer) LIKE $1`;
             queryValues = ["%" + data.toLowerCase() +"%"];
             break;
-        case 'arranger':
+        case 'arranger':  //query for searching by arranger
             queryText = `
                 SELECT 
                 songs.title, songs.composer, songs.arranged_by, 
@@ -46,7 +49,7 @@ router.get('/', (req, res) => {
                     WHERE LOWER (songs.arranged_by) LIKE $1`;
             queryValues = ["%" + data.toLowerCase() +"%"];
                     break;
-        case 'voicing':
+        case 'voicing':   //query for searching by voicing
             queryText = `
                 SELECT 
                 songs.title, songs.composer, songs.arranged_by, 
@@ -58,7 +61,7 @@ router.get('/', (req, res) => {
                     WHERE voicings.id = $1`;
             queryValues = [data];
             break;
-        case 'genre':
+        case 'genre':   // query for searching by genre
             queryText = `
                SELECT 
                     songs.title, songs.composer, songs.arranged_by, 
@@ -74,7 +77,7 @@ router.get('/', (req, res) => {
                         WHERE genres.id = $1`;
             queryValues = [data];
             break;
-        case 'ensemble':
+        case 'ensemble':   // query for searching for songs by ensemble group
             queryText = `
                 SELECT 
                     ensembles.name, songs.title, performances.date, performances.description, 
@@ -91,11 +94,6 @@ router.get('/', (req, res) => {
             break;
     }
 
-
-  
-  
-    // const queryText = `
-
     pool.query(queryText, queryValues)
     .then(result=> {
         res.send(result.rows);
@@ -106,29 +104,5 @@ router.get('/', (req, res) => {
     })
 });
 
-// router.get('/:id', (req, res) => {
-//     const queryText = `
-//         SELECT songs.title, active_songs.id FROM songs
-//   	        JOIN active_songs
-//   		    ON active_songs.song_id = songs.id
-//   	        WHERE active_songs.ensemble_id = $1;`
-//     const queryValues = [req.params.id]
-//     pool.query(queryText, queryValues)
-//     .then(result => {
-//         res.send(result.rows);
-//     }) 
-//     .catch(err => {
-//         console.log('dbError getting list of active songs ',err)
-//         res.sendStatus(500)
-//     })
-// })
-
-
-/**
- * POST route template
- */
-router.post('/', (req, res) => {
-  // POST route code here
-});
 
 module.exports = router;

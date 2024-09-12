@@ -1,9 +1,12 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const { rejectNonAdmin, rejectUnauthenticated } = require('../modules/authentication-middleware');
 
 
-router.get('/', (req, res) => {
+// GETS the list of voicings
+
+router.get('/', rejectUnauthenticated, (req, res) => {
   const queryText = `
     SELECT * FROM "voicings"
         ORDER BY "name";`;
@@ -18,29 +21,5 @@ router.get('/', (req, res) => {
     })
 });
 
-// router.get('/:id', (req, res) => {
-//     const queryText = `
-//         SELECT songs.title, active_songs.id FROM songs
-//   	        JOIN active_songs
-//   		    ON active_songs.song_id = songs.id
-//   	        WHERE active_songs.ensemble_id = $1;`
-//     const queryValues = [req.params.id]
-//     pool.query(queryText, queryValues)
-//     .then(result => {
-//         res.send(result.rows);
-//     }) 
-//     .catch(err => {
-//         console.log('dbError getting list of active songs ',err)
-//         res.sendStatus(500)
-//     })
-// })
-
-
-/**
- * POST route template
- */
-router.post('/', (req, res) => {
-  // POST route code here
-});
 
 module.exports = router;

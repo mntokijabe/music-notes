@@ -1,25 +1,12 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const { rejectNonAdmin, rejectUnauthenticated } = require('../modules/authentication-middleware');
 
 
-router.get('/', (req, res) => {
-  const queryText = `
-    SELECT * FROM "ensembles"
-        ORDER BY "name";`;
+// GETS the data for a song
 
-    pool.query(queryText)
-    .then(result=> {
-        console.log('result of ensembles',result)
-        res.send(result.rows);
-    })
-    .catch(err => {
-        console.log('db error getting ensembles',err);
-        res.sendStatus(500)
-    })
-});
-
-router.get('/:id',  async (req, res) => {
+router.get('/:id', rejectUnauthenticated, async (req, res) => {
     let connection;
     try {
         connection = await pool.connect()
@@ -62,8 +49,9 @@ router.get('/:id',  async (req, res) => {
 /**
  * POST route 
  */
+// ADDS a song and its data to the database
 
-router.post('/', async(req, res) => {
+router.post('/', rejectNonAdmin, rejectUnauthenticated, async(req, res) => {
     const song = req.body;
     let connection;
     try {
