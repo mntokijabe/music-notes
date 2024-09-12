@@ -23,6 +23,17 @@ function* fetchActiveSongs(action) {
     }
 }
 
+function* deleteActiveSong(action) {
+  console.log('in fetchActiveSongs with payload', action.payload)
+    try {
+
+        yield axios.delete('/api/ensembles',{params: 
+          {songId: action.payload.songId, ensembleId: action.payload.ensembleId}})
+        yield put({ type: 'GET_ACTIVE_SONGS', payload: action.payload.ensembleId})
+    } catch (error) {
+        console.log('Error getting active songs ',error)
+    }
+}
 function* addToRepertoire (action) {
   try {
 
@@ -38,6 +49,7 @@ function* getEnsembles() {
   yield takeLatest('GET_ENSEMBLES', fetchEnsembles);
   yield takeLatest('GET_ACTIVE_SONGS', fetchActiveSongs);
   yield takeLatest('ADD_TO_REPERTOIRE', addToRepertoire);
+  yield takeLatest('DELETE_ACTIVE_SONG', deleteActiveSong);
 }
 
 export default getEnsembles;

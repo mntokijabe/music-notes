@@ -9,18 +9,27 @@ function Sidebar() {
     const user = useSelector(store => store.user);
     const dispatch = useDispatch();
     const [choralGroup, setChoralGroup] = useState('');
+    const [songId, setSongId] = useState('')
 
     useEffect(() => {
         dispatch({ type: 'GET_ENSEMBLES'})
     },[]);
 
-
+console.log('active songs are ', activeSongs)
     const handleSelect = (e) => {
         e.preventDefault();
         setChoralGroup(e.target.value) 
         dispatch({ type: 'GET_ACTIVE_SONGS', payload: e.target.value})
     }
-    
+    const handleDelete = (song) => {
+      // e.preventDefault();
+      console.log('songid is',song)
+      // console.log('e is' ,e)
+      setSongId(song)
+      console.log('choralGroup is', choralGroup)
+      
+      dispatch({ type: 'DELETE_ACTIVE_SONG', payload: {ensembleId: choralGroup, songId: song}})
+    }
   return (
     
     <Box
@@ -43,7 +52,8 @@ function Sidebar() {
         This group is currently singing:
         {activeSongs.map((song) => (
           <ListItem key={song.song_id} component={Link} to={`/info/${song.song_id}`} >
-              <ListItemText primary={song.title} />
+              <ListItemText primary={song.title} /> 
+              {user.admin == true && <Button  onClick={() => handleDelete(song.song_id)}>❌</Button>}
           </ListItem>
           ))}
       </List>
