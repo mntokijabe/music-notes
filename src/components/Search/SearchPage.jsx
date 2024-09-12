@@ -113,7 +113,7 @@ function SearchPage() {
             </Box>
           </RadioGroup>
          <Button type="submit" variant="contained" color="primary" sx={{mt:"15px", ml:"120px", width:"100px"}}>
-          Submit Seach
+          Submit Search
         </Button>
         </FormControl>
        
