@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Box, List, ListItem, ListItemText, Select, MenuItem, Button } from '@mui/material';
+import { Box, List, ListItem, ListItemText, Select, MenuItem, Button, Paper } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom/cjs/react-router-dom';
+import Swal from 'sweetalert2';
 
 function Sidebar() {
     const ensembles = useSelector(store => store.ensembles);
     const activeSongs = useSelector(store => store.activeSongs);
     const user = useSelector(store => store.user);
     const dispatch = useDispatch();
-    const [choralGroup, setChoralGroup] = useState('');
+    const [choralGroup, setChoralGroup] = useState();
     const [songId, setSongId] = useState('')
 
     useEffect(() => {
@@ -22,13 +23,22 @@ function Sidebar() {
     }
     const handleDelete = (song) => {
       setSongId(song)
+      Swal.fire({
+        text: `Do you want to remove this song from this ensemble's list?`,
+        position: 'top',
+        showCancelButton: true,
+        confirmButtonText: "Yes",
+        cancelButtonText: "No"
+      }).then((result) => {
+          if (result.isConfirmed)
       dispatch({ type: 'DELETE_ACTIVE_SONG', payload: {ensembleId: choralGroup, songId: song}})
-    }
+        })
+        }
   return (
     <>
-    {user.id && <Box
-      variant="permanent"
-      sx={{padding: "15px",width: 180, flexShrink: 0, marginLeft:-3, marginRight:2, '& .MuiBox-paper': { width: 1800, boxSizing: 'border-box' }, bgcolor:'lightgray'}}
+    {user.id && <Paper
+        elevation='8'
+      sx={{padding: "15px",width: 180, flexShrink: 0, marginLeft:-8, marginRight:2, '& .MuiBox-paper': { width: 1800, boxSizing: 'border-box' }, bgcolor:'#f0f0f0'}}
     >
         <h3 >Select an Ensemble</h3>
         <Select sx={{ml:"15px", width:"100px", ml:"20px", height:"30px"}}
@@ -51,7 +61,7 @@ function Sidebar() {
           </ListItem>
           ))}
       </List>
-    </Box>
+    </Paper>
         }
         </>
   );

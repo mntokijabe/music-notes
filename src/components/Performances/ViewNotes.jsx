@@ -106,7 +106,7 @@ export default function ViewNotes () {
                         </tbody>
                     </table>
                     <Box sx={{marginTop:"20px"}}>
-                        <h3>Recheck all entries then click Submit
+                        <h3>Re-check all entries then click Submit
                         <Button type="submit" variant="contained" sx={{marginLeft:"30px"}}>Submit</Button></h3> 
                     </Box>
                 </form>
