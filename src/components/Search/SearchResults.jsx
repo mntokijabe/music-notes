@@ -15,8 +15,7 @@
         const dispatch = useDispatch();
         const results = useSelector(store => store.searchResults);
 
-    
-    
+
     
         useEffect(() =>{
             dispatch({
@@ -24,8 +23,6 @@
             })
         }, [])
     
-        console.log('search results are: ',results)
-        console.log('category is',category)
     
         return(
             <Box sx={{ml:5}}>

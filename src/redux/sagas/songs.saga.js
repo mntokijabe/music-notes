@@ -29,7 +29,6 @@ function* editSong(action) {
 
 function* deleteGenre(action) {
     const songId = action.payload.songId;
-    console.log('songId is', songId)
     try {
 
         yield axios.delete('/api/edits',{params:
@@ -57,7 +56,6 @@ function* addNewSong(action) {
     try {
 
     const newId = yield axios.post('/api/songs',action.payload)
-    console.log('newId is', newId.data.id)
     yield put({ type: 'GET_SONG_INFO', payload: newId.data.id})
     const {history} = action
     history.push(`/info/${newId.data.id}`)

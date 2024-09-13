@@ -5,6 +5,8 @@ body,
 }
 
 body {
+  background-image: url('../../../public/music_background.jpeg');
+  background-size: cover;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
 }
@@ -106,7 +108,12 @@ Form Treatment
   border-radius: 3px;
   box-shadow: 0 1px 2px rgb(0, 0, 0, 0.4);
 }
+.formDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
+}
 input {
   margin: 5px;
   margin-bottom: 10px;

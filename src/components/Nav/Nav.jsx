@@ -3,46 +3,96 @@ import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import { useSelector } from 'react-redux';
-import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
+import { AppBar, Toolbar, Typography, Button, Box, IconButton } from '@mui/material';
+import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
+
 
 function Nav() {
   const user = useSelector((store) => store.user);
-  console.log('user values are ', user)
   return (
-    <Box className="nav" >
-        {/* If no user is logged in, show these links */}
-        {!user.id && (
-          // If there's no user, show login/registration links
+    <Box  className="nav" sx={{display:'flex', flexDirection:'row', flexGrow:1, justifyContent:'space-between'}}>
+      {/* left side  Box 1*/}
+      <Box sx={{flexGrow:1}}>
+        <IconButton size='large' color='inherit'> <LibraryMusicIcon /> </IconButton>
+        <Link className="navLink" to="/about">
+          About
+        </Link>   
+      </Box>
+
+
+    {/* center  Box 2 */}
+      
+         {/* If a user is logged in, show these links */}
+        {(user.id && user.admin == false) && 
+        <Box sx={{display:'flex', flexDirection:'row', flexGrow:3, justifyContent:'flex-end', gap:2}}>
+          <Button component={Link} to="/user" variant="contained">Search Library</Button>
+          <Button component={Link} to="/calendar" variant="contained">Calendar</Button>
+        </Box>
+        }
+        {(user.id && user.admin==true) && (
+          <Box sx={{display:'flex', flexDirection:'row', flexGrow:3, justifyContent:'flex-end', gap:2}}>
+            <Button component={Link} to="/user" variant="contained">Search Library</Button>
+            <Button component={Link} to="/addsong" variant="contained">Add Music</Button>
+            <Button component={Link} to="/calendar" variant="contained">Calendar</Button>
+          </Box>
+        )}
+   
+
+
+      {/* Right side Box 3 */}
+      <Box sx={{display:'flex', flexGrow:2, justifyContent:'flex-end', gap:2}}>
+        {/* If no user is logged in, show these links */} 
+        {!user.id && 
           <Link className="navLink" to="/login">
             Login / Register
           </Link>
-        )}
-
-        {/* If a user is logged in, show these links */}
+        }
+         {/* If a user is logged in, show these links */}
         {(user.id && user.admin == false) && (
           <>
-            <Button component={Link} to="/user" variant="contained">Search Library</Button>
-
-            <Button component={Link} to="/calendar" variant="contained">Calendar</Button>
-            <h3>Welcome, {user.username}</h3>
+            <h3 style={{padding:'10px', color:'white'}}>Welcome, {user.username}</h3>
             <LogOutButton className="navLink" />
           </>
         )}
         {(user.id && user.admin==true) && (
           <>
-            <Button component={Link} to="/user" variant="contained">Search Library</Button>
-            <Button component={Link} to="/addsong" variant="contained">Add Music</Button>
-            <Button component={Link} to="/calendar" variant="contained">Calendar</Button>
-            <h3>Welcome, {user.username}</h3>
+            <h3 style={{padding:'10px', color:'white'}}>Welcome, {user.username} </h3>
+            <h4 style={{padding:'9px', }}>(Admin)</h4>
             <LogOutButton className="navLink" />
           </>
         )}
-
-        <Link className="navLink" to="/about">
-          About
-        </Link>
+      </Box>
+    
     </Box>
   );
 }
 
 export default Nav;
+
+
+{/* <Box sx={{justifyContent:'flex-end', gap:8}}>
+
+        
+
+
+{(user.id && user.admin == false) && (
+  <>
+    <Button component={Link} to="/user" variant="contained">Search Library</Button>
+
+    <Button component={Link} to="/calendar" variant="contained">Calendar</Button>
+    <h3>Welcome, {user.username}</h3>
+    <LogOutButton className="navLink" />
+  </>
+)}
+{(user.id && user.admin==true) && (
+  <>
+    <Button component={Link} to="/user" variant="contained">Search Library</Button>
+    <Button component={Link} to="/addsong" variant="contained">Add Music</Button>
+    <Button component={Link} to="/calendar" variant="contained">Calendar</Button>
+    <h3>Welcome, {user.username} </h3><h5>Admin</h5>
+    <LogOutButton className="navLink" />
+  </>
+)}
+
+
+</Box> */}

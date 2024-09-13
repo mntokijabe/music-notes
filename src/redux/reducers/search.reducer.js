@@ -4,7 +4,7 @@ const searchReducer = (state = [], action) => {
         let searchResults = action.payload.data
         return searchResults;
       case 'UNSET_SEARCH_RESULTS':
-        return {};
+        return [];
       default:
         return state;
     }

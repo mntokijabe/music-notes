@@ -3,7 +3,7 @@ const ensemblesReducer = (state = [], action) => {
       case 'SET_ENSEMBLES':
         return action.payload;
       case 'UNSET_ENSEMBLES':
-        return {};
+        return [];
       default:
         return state;
     }

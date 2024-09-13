@@ -2,6 +2,8 @@ import { useSelector,useDispatch } from "react-redux";
 import { useEffect, useState } from 'react';
 import { useHistory, useParams, Link } from "react-router-dom/cjs/react-router-dom.min";
 import { Box, Button, Select, MenuItem, Container, Paper } from "@mui/material";
+import React from 'react';
+import Swal from 'sweetalert2';
 
 function SongEdit () {
     const params = useParams();
@@ -38,6 +40,15 @@ function SongEdit () {
 
 
     const handleEdit = (category) => {
+        Swal.fire({
+            text: `You are about to edit ${category}. Are you sure?`,
+            // text: "are you sure?",
+            position: 'top',
+            showCancelButton: true,
+            confirmButtonText: "Yes",
+            cancelButtonText: "No"
+          }).then((result) => {
+              if (result.isConfirmed)
         switch (category) {
             case 'title':
                 dispatch({ type: 'EDIT_SONG', payload: {category: category, songId: songId, change: title}, history})
@@ -63,16 +74,28 @@ function SongEdit () {
             case 'url':
                 dispatch({ type: 'EDIT_SONG', payload: {category: category, songId: songId, change: url}, history})
                 break;
-        }
+        }})
     }
 
     const handleDelete = (genreId) => {
-        console.log('in handleDelete')
+        Swal.fire({
+            text: `You are about to delete a genre. Are you sure?`,
+            // text: "are you sure?",
+            position: 'top',
+            showCancelButton: true,
+            confirmButtonText: "Yes",
+            cancelButtonText: "No"
+          }).then((result) => {
+              if (result.isConfirmed)
         dispatch({ type: 'DELETE_SONG_GENRE', payload: {songId: songId, genreId: genreId}})
+            })
     }
     const handleAdd = (genreId) => {
-        console.log('in handleAdd')
-        genre === '' && alert("you must choose a genre from the dropdown")
+        genre === '' && Swal.fire({
+            text: 'You must first select an genre',
+            position: 'top',
+            confirmButtonText: 'Cool'
+          })
         !genre =='' && dispatch({ type: 'ADD_SONG_GENRE', payload: {songId: songId, genreId: genre}})
     }
 
@@ -98,9 +121,9 @@ function SongEdit () {
                         <td> <input onChange={(e) => setArranger(e.target.value)} type="text" value={arranger} /></td>
                         <td><Button onClick={() => handleEdit("arranger")}>Submit</Button></td>
                     </tr>
-                    <tr> 
+                    <tr style={{height:"50px"}}> 
                         <td>Voicing:</td>
-                        <td> <Select sx={{width:"100px", marginRight:"20px"}}
+                        <td> <Select sx={{ml:"5px", width:"100px", height:"25px", marginRight:"20px"}}
                         value={newVoicing}
                         onChange={(e) => setNewVoicing(e.target.value)}
                     >
@@ -141,7 +164,7 @@ function SongEdit () {
                             ))}
                             <tr><td>Add genre</td>
                             <td>
-                                <Select
+                                <Select sx={{width:'100px', height:"25px"}}
                                     value={genre}
                                     onChange={(e) => setGenre(e.target.value)} type="text"
                                 >

@@ -12,7 +12,6 @@ function* fetchNotes(action) {
 }
 
 function* addNotes(action) {
-    console.log('in add notes')
     try {
         yield axios.post('/api/notes',action.payload)
         yield put({ type: 'GET_NOTES', payload: action.payload.songId})

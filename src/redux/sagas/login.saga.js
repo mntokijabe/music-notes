@@ -53,6 +53,14 @@ function* logoutUser(action) {
     // remove the client-side user object to let
     // the client-side code know the user is logged out
     yield put({ type: 'UNSET_USER' });
+    yield put({ type: 'UNSET_ACTIVE_SONGS'})
+    yield put({ type: 'UNSET_ENSEMBLES'})
+    yield put({ type: 'UNSET_GENRE'})
+    yield put({ type: 'UNSET_GENRE_LIST'})
+    yield put({ type: 'UNSET_NOTES'})
+    yield put({ type: 'UNSET_SEARCH_RESULTS'})
+    yield put({ type: 'UNSET_SONG_INFO'})
+    yield put({ type: 'UNSET_VOICING'})
   } catch (error) {
     console.log('Error with user logout:', error);
   }

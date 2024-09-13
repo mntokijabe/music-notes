@@ -20,7 +20,6 @@ function* searchThing(action) {
 }
 
 function* search() {
-    console.log('in search')
     yield takeLatest('SEARCH_THING', searchThing);
   //   yield takeLatest('GET_ACTIVE_SONGS', fetchActiveSongs);
   }

@@ -1,3 +1,6 @@
+import React from 'react';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import { useSelector,useDispatch } from "react-redux";
 import { useEffect } from 'react';
 import { useHistory, useParams, Link } from "react-router-dom/cjs/react-router-dom.min";
@@ -27,20 +30,28 @@ function SongInfo () {
     makeList()
     const handleChange = () => {
         activeEnsemble.length > 0 && addSong()
-        
-        // (() => {
-        //     alert('You are adding this song to the repertoire of the ensemble: '+ activeEnsemble[0].name);
-        //     console.log('payload here is', activeEnsemble[0].ensemble_id + songInfo.id)
-        //     dispatch({ type: 'ADD_TO_REPERTOIRE', payload:{ensemble: activeEnsemble[0].ensemble_id, song: songInfo.id}})
-        // })
-        activeEnsemble.length === 0 && alert('You must first select an ensemble in the sidebar')
+
+        activeEnsemble.length === 0 &&  Swal.fire({
+            title: 'Error!',
+            text: 'You must first select an ensemble in the sidebar',
+            position: 'top-left',
+            confirmButtonText: 'Cool'
+          })
+                // alert('You must first select an ensemble in the sidebar')
     };
 
     function addSong(){
-                    alert('You are adding this song to the repertoire of the ensemble: '+ activeEnsemble[0].name);
-            console.log('payload here is', activeEnsemble[0].ensemble_id + songInfo.id)
-            dispatch({ type: 'ADD_TO_REPERTOIRE', payload:{ensemble_id: activeEnsemble[0].ensemble_id, song_id: Number(songId)}})
-        }
+                    // alert('You are adding this song to the repertoire of the ensemble: '+ activeEnsemble[0].name);
+                    Swal.fire({
+                        text: `This will add this song to the repertoire of ${activeEnsemble[0].name}. Do you confirm?`,
+                        position:'top',
+                        showCancelButton: true,
+                        confirmButtonText: "Yes",
+                        cancelButtonText: "No"
+                      }).then((result) => {
+                          if (result.isConfirmed)
+                    dispatch({ type: 'ADD_TO_REPERTOIRE', payload:{ensemble_id: activeEnsemble[0].ensemble_id, song_id: Number(songId)}})
+        })}
     
     return(
         <Container display="flex" sx={{display: 'flex', flexDirection:'row'}}>

@@ -22,7 +22,8 @@ router.get('/', rejectUnauthenticated, (req, res) => {
                     FROM songs
                     JOIN voicings
                         ON songs.voicing_id = voicings.id
-                    WHERE LOWER (songs.title) LIKE $1`;
+                    WHERE LOWER (songs.title) LIKE $1
+                    ORDER BY songs.title`;
             queryValues = ["%" + data.toLowerCase() +"%"];
                     break;
         case 'composer':   // query for searching by composer
@@ -34,7 +35,8 @@ router.get('/', rejectUnauthenticated, (req, res) => {
                     FROM songs
                     JOIN voicings
                         ON songs.voicing_id = voicings.id
-                    WHERE LOWER (songs.composer) LIKE $1`;
+                    WHERE LOWER (songs.composer) LIKE $1
+                    ORDER BY songs.composer;`;
             queryValues = ["%" + data.toLowerCase() +"%"];
             break;
         case 'arranger':  //query for searching by arranger
@@ -46,7 +48,8 @@ router.get('/', rejectUnauthenticated, (req, res) => {
                     FROM songs
                     JOIN voicings
                         ON songs.voicing_id = voicings.id
-                    WHERE LOWER (songs.arranged_by) LIKE $1`;
+                    WHERE LOWER (songs.arranged_by) LIKE $1
+                    ORDER BY songs.arranged_by`;
             queryValues = ["%" + data.toLowerCase() +"%"];
                     break;
         case 'voicing':   //query for searching by voicing
@@ -58,7 +61,8 @@ router.get('/', rejectUnauthenticated, (req, res) => {
                     FROM songs
                     JOIN voicings
                         ON songs.voicing_id = voicings.id
-                    WHERE voicings.id = $1`;
+                    WHERE voicings.id = $1
+                    ORDER BY songs.title`;
             queryValues = [data];
             break;
         case 'genre':   // query for searching by genre

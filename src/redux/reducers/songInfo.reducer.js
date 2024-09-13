@@ -3,7 +3,7 @@ const songInfoReducer = (state = [], action) => {
       case 'SET_SONG_INFO':
         return action.payload.data[0];
       case 'UNSET_SONG_INFO':
-        return {};
+        return [];
       default:
         return state;
     }

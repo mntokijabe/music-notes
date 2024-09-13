@@ -42,7 +42,6 @@ router.post('/', rejectNonAdmin, rejectUnauthenticated, (req, res) => {
 info. The genres are done separately
 */
 router.put('/', rejectNonAdmin, rejectUnauthenticated, (req, res) => {
-    console.log('req.body is',req.body)
     const category = req.body.category;
     let queryText = '';
     let queryValues = [];
@@ -122,7 +121,6 @@ router.put('/', rejectNonAdmin, rejectUnauthenticated, (req, res) => {
 
 // This deletes a genre from a specific song
 router.delete('/', rejectNonAdmin, rejectUnauthenticated, (req, res) => {
-    console.log('req.params in delete is ', req.query.songId)
     const queryText = `
         DELETE FROM genres_songs
         WHERE song_id = $1 AND genre_id = $2;`

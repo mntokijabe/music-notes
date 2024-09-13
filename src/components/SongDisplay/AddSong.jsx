@@ -2,6 +2,8 @@ import { useSelector,useDispatch } from "react-redux";
 import { useEffect, useState } from 'react';
 import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { Box, Button, Select, MenuItem, FormControl } from "@mui/material";
+import React from 'react';
+import Swal from 'sweetalert2';
 
 function AddSong () {
     const dispatch = useDispatch();
@@ -31,9 +33,20 @@ function AddSong () {
     const handleSubmit = (e) => {
         e.preventDefault();
         if(title === "" || composer === "" || newVoicing === "" || genre === "" || copies === "") {
-            alert('You need to enter all the required information')
-        }
+            Swal.fire({
+                text: `Make sure to enter all required information`,
+                position: 'top',
+                confirmButtonText: "Ok",
+        })}
         else{
+            Swal.fire({
+                text: `Did you double-check all the information?`,
+                position: 'top',
+                showCancelButton: true,
+                confirmButtonText: "Yes",
+                cancelButtonText: "No"
+              }).then((result) => {
+                  if (result.isConfirmed)
             dispatch({ type: 'ADD_NEW_SONG', payload: {
                 title: title,
                 composer: composer,
@@ -45,7 +58,7 @@ function AddSong () {
                 copies: copies,
                 url: url
             },history})
-        }
+        })}
     }
 
 
@@ -121,7 +134,7 @@ function AddSong () {
                 </tbody>
             </table>
             <Box sx={{marginTop:"20px"}}>
-                <h3>Recheck all entries then click Submit 
+                <h3>Re-check all entries then click Submit 
                 <Button type="submit" variant="contained" size="large" sx={{marginLeft:"60px"}}>Submit</Button>
                 </h3>
             </Box>
