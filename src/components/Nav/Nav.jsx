@@ -50,14 +50,14 @@ function Nav() {
          {/* If a user is logged in, show these links */}
         {(user.id && user.admin == false) && (
           <>
-            <h3 style={{padding:'10px', color:'white'}}>Welcome, {user.username}</h3>
+            <h2 style={{padding:'10px', color:'#232323'}}>Welcome, {user.username}</h2>
             <LogOutButton className="navLink" />
           </>
         )}
         {(user.id && user.admin==true) && (
           <>
-            <h3 style={{padding:'10px', color:'white'}}>Welcome, {user.username} </h3>
-            <h4 style={{padding:'9px', }}>(Admin)</h4>
+            <h2 style={{padding:'10px', color:'#232323'}}>Welcome, {user.username} </h2>
+            <h4 style={{padding:'13px', color:'#4a4a4a' }}>(Admin)</h4>
             <LogOutButton className="navLink" />
           </>
         )}

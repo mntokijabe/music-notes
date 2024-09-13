@@ -1,3 +1,7 @@
+@import "https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Pacifico&display=swap";
+
+
 html,
 body,
 #react-root {
@@ -34,7 +38,7 @@ Button
   border-color: #014041;
   border-width: 1px 1px 3px;
   border-radius: 4px;
-  background-color: #00acb0;
+  background-color: #23b5d3;
   color: #f8f8f8;
   font-size: 1.1rem;
   outline: 0;
@@ -124,7 +128,7 @@ input {
 
 /* TABLE STYLING */
 table {
-  border: 1px solid darkolivegreen;
+  border: 1px solid #75abbc;
   border-collapse: collapse;
 }
 
@@ -133,12 +137,12 @@ th {
   border-collapse: collapse;
   text-align: left;
   padding: 5px;
-  background-color: darkolivegreen;
+  background-color: #23b5d3;
   color: white;
 }
 
 td {
-  border: 1px solid darkolivegreen;
+  border: 1px solid #75abbc;
   border-collapse: collapse;
   width: auto;
   padding: 5px;
@@ -170,9 +174,9 @@ td:nth-child(8) {
 }
 
 tr:nth-child(odd) {
-  background-color: lavenderblush;
+  background-color: #c4ccd4;
 }
 
 tr:nth-child(even) {
-  background-color: mintcream;}
+  background-color: #dfe0e2;}
 

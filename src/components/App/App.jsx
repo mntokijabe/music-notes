@@ -6,7 +6,8 @@ import {
   Switch,
 } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Container, Grid, Paper } from '@mui/material';
+import { Container, Typography, Paper } from '@mui/material';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
@@ -25,9 +26,27 @@ import Calendar from '../Calendar/Calendar';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
-
-
 import './App.css';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#23b5d3', // Custom primary color '#1976d2'
+    },
+    secondary: {
+      main: '#75abbc', // Custom secondary color '#dc004e'
+    },
+    background: {
+      default: 'a2aebb', // Background color  '#f4f4f4'
+    },
+  },
+  typography: {
+
+    h3: {
+      fontFamily: 'Pacific, cursive',
+    }
+  }
+});
 
 function App() {
 
@@ -44,7 +63,7 @@ function App() {
       <>
         <Header />
         <Nav />
-        <Container component="main" disableGutters style={{ display: 'flex',  gap:12, justifyContent:'flex-start'}}>
+        <Container component="main" disableGutters style={{ display: 'flex',  gap:12, }}>
           {user.id && <Sidebar />}
           {children}
         </Container>
@@ -54,7 +73,7 @@ function App() {
       }
 
   return (
-    <>
+    <><ThemeProvider theme={theme}>
       <Router>
 
           <Layout >
@@ -111,6 +130,7 @@ function App() {
           </Layout>
 
       </Router>
+      </ThemeProvider>
     </>
   )
 

@@ -4,6 +4,8 @@ import { useHistory, useParams, Link } from "react-router-dom/cjs/react-router-d
 import { Box, Button, Select, Paper, MenuItem } from "@mui/material";
 import DatePicker from "react-datepicker";
 import 'react-datepicker/dist/react-datepicker.css'
+import React from 'react';
+import Swal from 'sweetalert2';
 
 
 export default function ViewNotes () {
@@ -28,18 +30,25 @@ export default function ViewNotes () {
     },[]);
 
     const handleSubmit = () => {
-        dispatch({ type: 'ADD_NOTES', payload: {
+        if(performDate === "" || eventDescription === "" || ensemble === "" || performanceNote === "" ) {
+        Swal.fire({
+            text: `Make sure to enter all the information`,
+            position: 'top',
+            confirmButtonText: "Ok",
+    })}
+      else{  dispatch({ type: 'ADD_NOTES', payload: {
             songId: songId,
             date: performDate,
             description: eventDescription,
             ensemble: ensemble,
             note: performanceNote
-        }})
+            }})
+        }
     }
 
 
     return(
-        <Paper>
+        <Paper sx={{padding:'15px'}}>
             <Box>
             <h2>Past Notes for:  {notes[0]&& notes[0].title} </h2>
             <table>

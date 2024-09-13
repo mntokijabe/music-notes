@@ -38,7 +38,7 @@ function Sidebar() {
     <>
     {user.id && <Paper
         elevation='8'
-      sx={{padding: "15px",width: 180, flexShrink: 0, marginLeft:-8, marginRight:2, '& .MuiBox-paper': { width: 1800, boxSizing: 'border-box' }, bgcolor:'#f0f0f0'}}
+      sx={{padding: "15px",width: 180, flexShrink: 0, marginLeft:0, marginRight:2, '& .MuiBox-paper': { width: 1800, boxSizing: 'border-box' }, bgcolor:'#f0f0f0'}}
     >
         <h3 >Select an Ensemble</h3>
         <Select sx={{ml:"15px", width:"100px", ml:"20px", height:"30px"}}
