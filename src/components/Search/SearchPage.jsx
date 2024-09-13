@@ -61,16 +61,21 @@ function SearchPage() {
 
   const handleRadioChange = (event) => {
     setButtonValue(event.target.value); // Update the selected radio button value
-    console.log(buttonValue)
   };
 
 
   return (
     <Paper elevation='0'  style={{ flex: 1, padding: 16 }}>
+      <h1>Welcome!</h1> 
+      <div style={{width:'350px', textWrap:'wrap'}}>
+        This is the place to start your Music Library search.           
+        <li>Select a radio button and enter the search value</li> 
+          <li>Only one search criteria can be used at a time</li></div>
+      <br></br>
       <Box component="form" onSubmit={handleSubmit}>
         <FormControl column>
           <FormLabel id="demo-radio-buttons-group-label"><h2>Search Music Library By</h2></FormLabel>
-          Select a radio button, then enter the search value <p></p>
+
           <RadioGroup 
             aria-labelledby="demo-radio-buttons-group-label"
             defaultValue="Title"
@@ -79,24 +84,24 @@ function SearchPage() {
           >
             <Box sx={{ height: '60px' }}>
               <FormControlLabel value="title" control={<Radio />} label="Title" />
-              <input style={{marginLeft:"42px"}} onChange={(e) => setTitle(e.target.value)} type="text" value={title} />
+              <input style={{marginLeft:"42px"}} onChange={(e) => {setTitle(e.target.value); setButtonValue('title')}} type="text" value={title} />
             </Box>
             <Box sx={{ height: '60px' }}>
               <FormControlLabel value="composer" control={<Radio />} label="Composer" />
-              <input style={{marginLeft:"9px"}} onChange={(e) => setComposer(e.target.value)} type="text" value={composer} />
+              <input style={{marginLeft:"9px"}} onChange={(e) => {setComposer(e.target.value); setButtonValue('composer')}} type="text" value={composer} />
             </Box>
             <Box sx={{ height: '60px' }}>
               <FormControlLabel value="arranger" control={<Radio />} label="Arranger" />
-              <input style={{marginLeft:"18px"}}onChange={(e) => setArranger(e.target.value)} type="text" value={arranger} />
+              <input style={{marginLeft:"18px"}}onChange={(e) => {setArranger(e.target.value), setButtonValue('arranger')}} type="text" value={arranger} />
             </Box>
             <Box sx={{ height: '60px' }}>
               <FormControlLabel value="genre" control={<Radio />} label="Genre" />
               <Select sx={{width:"180px", ml:"31px", height:"30px"}}
                 value={genre}
-                onChange={(e) => setGenre(e.target.value)} type="text"
+                onChange={(e) => {setGenre(e.target.value), setButtonValue('genre')}} type="text"
               >
                 {genres.map((genre) => (
-                  <MenuItem value={genre.id} >{genre.genre_name} </MenuItem>
+                  <MenuItem key={genre.id} value={genre.id} >{genre.genre_name} </MenuItem>
                 ))}
               </Select>
             </Box>
@@ -104,10 +109,10 @@ function SearchPage() {
               <FormControlLabel value="voicing" control={<Radio />} label="Voicing" />
               <Select sx={{width:"180px", ml:"25px", height:"30px"}}
                 value={voicing}
-                onChange={(e) => setVoicing(e.target.value)}
+                onChange={(e) => {setVoicing(e.target.value), setButtonValue('voicing')}}
               >
                 {voicings.map((voice) => (
-                  <MenuItem value={voice.id} >{voice.name} </MenuItem>
+                  <MenuItem key={voice.id} value={voice.id} >{voice.name} </MenuItem>
                 ))}
               </Select>
             </Box>

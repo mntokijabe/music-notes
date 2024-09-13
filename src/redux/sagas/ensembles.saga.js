@@ -13,7 +13,6 @@ function* fetchEnsembles() {
 }
 
 function* fetchActiveSongs(action) {
-  console.log('in fetchActiveSongs')
     try {
 
         const activeSongs = yield axios.get(`/api/ensembles/${action.payload}`)
@@ -24,7 +23,6 @@ function* fetchActiveSongs(action) {
 }
 
 function* deleteActiveSong(action) {
-  console.log('in fetchActiveSongs with payload', action.payload)
     try {
 
         yield axios.delete('/api/ensembles',{params: 

@@ -4,7 +4,6 @@
 const genreReducer = (state = [], action) => {
     switch (action.type) {
       case 'SET_GENRES':
-        console.log('genre list is ',action.payload.data)
         return action.payload.data;
       case 'UNSET_GENRE':
         return [];

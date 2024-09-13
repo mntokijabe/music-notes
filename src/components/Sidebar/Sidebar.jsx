@@ -15,29 +15,23 @@ function Sidebar() {
         dispatch({ type: 'GET_ENSEMBLES'})
     },[]);
 
-console.log('active songs are ', activeSongs)
     const handleSelect = (e) => {
         e.preventDefault();
         setChoralGroup(e.target.value) 
         dispatch({ type: 'GET_ACTIVE_SONGS', payload: e.target.value})
     }
     const handleDelete = (song) => {
-      // e.preventDefault();
-      console.log('songid is',song)
-      // console.log('e is' ,e)
       setSongId(song)
-      console.log('choralGroup is', choralGroup)
-      
       dispatch({ type: 'DELETE_ACTIVE_SONG', payload: {ensembleId: choralGroup, songId: song}})
     }
   return (
-    
-    <Box
+    <>
+    {user.id && <Box
       variant="permanent"
       sx={{padding: "15px",width: 180, flexShrink: 0, marginLeft:-3, marginRight:2, '& .MuiBox-paper': { width: 1800, boxSizing: 'border-box' }, bgcolor:'lightgray'}}
     >
-        <h3 >Select Choir</h3>
-        <Select sx={{ml:"15px"}}
+        <h3 >Select an Ensemble</h3>
+        <Select sx={{ml:"15px", width:"100px", ml:"20px", height:"30px"}}
         value={choralGroup}
         onChange={(e) => {handleSelect(e)}}
         >
@@ -58,8 +52,10 @@ console.log('active songs are ', activeSongs)
           ))}
       </List>
     </Box>
-
+        }
+        </>
   );
+  
 }
 
 export default Sidebar;

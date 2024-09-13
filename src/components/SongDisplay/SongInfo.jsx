@@ -38,7 +38,6 @@ function SongInfo () {
 
     function addSong(){
                     alert('You are adding this song to the repertoire of the ensemble: '+ activeEnsemble[0].name);
-            console.log('payload here is', activeEnsemble[0].ensemble_id + songInfo.id)
             dispatch({ type: 'ADD_TO_REPERTOIRE', payload:{ensemble_id: activeEnsemble[0].ensemble_id, song_id: Number(songId)}})
         }
     

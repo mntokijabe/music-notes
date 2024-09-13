@@ -67,11 +67,9 @@ function SongEdit () {
     }
 
     const handleDelete = (genreId) => {
-        console.log('in handleDelete')
         dispatch({ type: 'DELETE_SONG_GENRE', payload: {songId: songId, genreId: genreId}})
     }
     const handleAdd = (genreId) => {
-        console.log('in handleAdd')
         genre === '' && alert("you must choose a genre from the dropdown")
         !genre =='' && dispatch({ type: 'ADD_SONG_GENRE', payload: {songId: songId, genreId: genre}})
     }

@@ -11,8 +11,8 @@ export default function SearchGenre () {
                 <thead>
                     <tr>
                         <th>Genre</th>
-                        <th>Composer</th>
                         <th>Title</th>
+                        <th>Composer</th>
                         <th>Arranged by</th>
                         <th>Voicing</th>
                         <th></th>
@@ -22,8 +22,8 @@ export default function SearchGenre () {
                     {data.map((song) => (
                     <tr key={song.id}>
                         <td>{song.genre_name}</td>
+                        <td>{song.title}</td> 
                         <td>{song.composer}</td>
-                        <td>{song.title}</td>
                         <td>{song.arranged_by}</td>
                         <td>{song.voicing}</td>
                         <td><Button component={Link} to={`/info/${song.id}`} variant="contained">Select</Button></td>

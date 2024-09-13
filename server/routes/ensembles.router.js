@@ -63,7 +63,6 @@ router.post('/', rejectNonAdmin, rejectUnauthenticated, (req, res) => {
 });
 
 router.delete('/', rejectNonAdmin, rejectUnauthenticated, (req, res) => {
-    console.log('req.params in delete is ', req.query.songId)
     const queryText = `
         DELETE FROM active_songs
         WHERE song_id = $1 AND ensemble_id = $2;`

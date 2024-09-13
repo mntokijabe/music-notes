@@ -3,9 +3,9 @@
 const genreInfoReducer = (state = [], action) => {
     switch (action.type) {
       case 'SET_SONG_INFO':
-        return action.payload.data[1];
+        return action.payload.data[1];  //payload has two objects, second object is genreInfo
       case 'UNSET_SONG_INFO':
-        return {};
+        return [];
       default:
         return state;
     }

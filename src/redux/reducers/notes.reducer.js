@@ -3,7 +3,7 @@ const notesReducer = (state = [], action) => {
         case 'SET_NOTES':
           return action.payload.data;
         case 'UNSET_NOTES':
-          return {};
+          return [];
         default:
           return state;
       }

@@ -21,7 +21,6 @@ import SongInfo from '../SongDisplay/SongInfo';
 import SongEdit from '../SongDisplay/SongEdit';
 import AddSong from '../SongDisplay/AddSong';
 import ViewNotes from '../Performances/ViewNotes';
-import Scheduler from '../Calendar/Scheduler';
 import Calendar from '../Calendar/Calendar';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
@@ -45,7 +44,7 @@ function App() {
       <>
         <Header />
         <Nav />
-        <Container component="main" style={{ display: 'flex', flex: 1}}>
+        <Container component="main" disableGutters style={{ display: 'flex',  gap:12, justifyContent:'flex-start'}}>
           {user.id && <Sidebar />}
           {children}
         </Container>
