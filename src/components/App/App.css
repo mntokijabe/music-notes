@@ -43,7 +43,9 @@ Button
   font-size: 1.1rem;
   outline: 0;
   cursor: pointer;
-  height: 40px
+  height: 40px;
+
+  width:100px;
 }
 
 .btn_sizeMin {
@@ -75,6 +77,7 @@ Button
   background: none;
   font: inherit;
   color: #444;
+
 }
 
 .btn_asLink:hover {

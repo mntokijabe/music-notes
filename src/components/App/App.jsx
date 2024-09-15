@@ -15,7 +15,7 @@ import Header from '../Header/Header';
 import Sidebar from '../Sidebar/Sidebar';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-
+import AboutPage from '../AboutPage/AboutPage';
 import SearchPage from '../Search/SearchPage';
 import SearchResults from '../Search/SearchResults';
 import SongInfo from '../SongDisplay/SongInfo';
@@ -79,6 +79,9 @@ function App() {
           <Layout >
           <Switch>
             <Redirect exact from="/" to="/home" />
+            <Route exact path="/about">
+              <AboutPage />
+            </Route>
 
             <ProtectedRoute exact path="/user">
               <SearchPage />

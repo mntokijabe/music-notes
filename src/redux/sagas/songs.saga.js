@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
+import React from 'react';
+import Swal from 'sweetalert2';
 
 
 
@@ -18,13 +20,14 @@ function* editSong(action) {
     // try {
 
     yield axios.put('/api/edits',action.payload)
-    alert(`${action.payload.category} was successfully updated`)
+    Swal.fire({
+        text: 'The edit was successful!',
+        position: 'top',
+        icon: 'success',
+        confirmButtonText: 'Ok'
+      })
     const {history} = action
     history.push(`/info/${action.payload.songId}`)
-    //     yield put({ type: 'SET_SONG_INFO', payload: songInfo})
-    // } catch (error) {
-    //     console.log('Error getting song info ',error)
-    // }
 }
 
 function* deleteGenre(action) {

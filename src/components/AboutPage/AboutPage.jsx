@@ -1,16 +1,28 @@
 import React from 'react';
 
-// This is one of our simplest components
-// It doesn't have local state,
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is'
+
 
 function AboutPage() {
   return (
     <div className="container">
       <div>
-        <p>This about page is for anyone to read!</p>
+        <p>Music Notes is an app for choir directors and students. </p>
+        <p>Students are able to see which songs each choral group is currently 
+          working on and can also search the school's music database.
+          Both students and teachers can view the Choral Calendar for upcoming events.</p>
+        <p>Directors additionally have admin rights and can also add and edit songs, 
+          modify ensemble information, and also keep notes about songs the groups 
+          have performed.
+        </p>
       </div>
+      <p>The making of Music Notes utilized the following technologies along with Javascript:</p>
+        <ul>React</ul>
+        <ul>Node.js</ul>
+        <ul>Redux, Sagas</ul>
+        <ul>PostgreSql</ul>
+        <ul>Material UI</ul>
+
+
     </div>
   );
 }
