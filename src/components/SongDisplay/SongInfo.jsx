@@ -83,8 +83,8 @@ function SongInfo () {
         
          
         </Box>
-        <Paper sx={{marginLeft:"30px"}}>
-            <img src={songInfo.image_url} style={{height:"400px"}}></img>
+        <Paper sx={{marginLeft:"30px", display:'flex', justifyItems:'center'}}>
+            <img src={songInfo.image_url} style={{height:"400px" }}></img>
         </Paper>
         </Container>
     )

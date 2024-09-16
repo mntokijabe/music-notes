@@ -9,7 +9,7 @@ body,
 }
 
 body {
-  background-image: url('../../../public/music_background.jpeg');
+  background-image: url('../../../public/music_background.jpg');
   background-size: cover;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;

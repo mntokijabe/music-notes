@@ -60,28 +60,38 @@ function AddSong () {
             },history})
         })}
     }
-
+    const handleAutoFill = () => {
+        setTitle('Messiah');
+        setComposer('G.F. Handel');
+        setArranger('Max Spickel')
+        setNewVoicing('7');
+        setGenre('7');
+        setPublisher('G Schirmer');
+        setCopyrightDate('1942');
+        setCopies('65');
+        setUrl('https://www.stantons.com/graphics/dbgraphics/53/f/leon-50323760-f.webp');
+    }
 
     return(
         <Box sx={{ml:5}}>
-            <h2>Input a new music piece into the system</h2>
+            <h2 onClick={handleAutoFill}>Input a new music piece into the system</h2>
             <h4>Enter the following information</h4>
             <form onSubmit={(e) => handleSubmit(e)}>
             <table>
                 <tbody >            
                     <tr className="songInfo" > 
                         <td style={{width:'100px'}}>Title:</td>
-                        <td> <input onChange={(e) => setTitle(e.target.value)} type="text" /></td>
+                        <td> <input onChange={(e) => setTitle(e.target.value)} type="text" value={title}/></td>
                         <td>*required</td>
                     </tr>
                     <tr > 
                         <td>Composer:</td>
-                        <td> <input onChange={(e) => setComposer(e.target.value)} type="text"  /></td>
+                        <td> <input onChange={(e) => setComposer(e.target.value)} type="text" value={composer} /></td>
                         <td>*required</td>
                     </tr>
                     <tr> 
                         <td>Arranged by:</td>
-                        <td> <input onChange={(e) => setArranger(e.target.value)} type="text"  /></td>
+                        <td> <input onChange={(e) => setArranger(e.target.value)} type="text" value={arranger} /></td>
                         <td></td>
                     </tr>
                     <tr> 
@@ -113,29 +123,29 @@ function AddSong () {
                     </tr>
                     <tr> 
                         <td>Publisher:</td>
-                        <td> <input onChange={(e) => setPublisher(e.target.value)} type="text"  /></td>
+                        <td> <input onChange={(e) => setPublisher(e.target.value)} type="text" value={publisher} /></td>
                         <td></td>
                     </tr>
                     <tr> 
                         <td>Copyright:</td>
-                        <td> <input onChange={(e) => setCopyrightDate(e.target.value)} type="text"  /></td>
+                        <td> <input onChange={(e) => setCopyrightDate(e.target.value)} type="text" value={copyrightDate} /></td>
                         <td>Enter year</td>
                     </tr>
                     <tr > 
                         <td>Copies on Hand:</td>
-                        <td> <input onChange={(e) => setCopies(e.target.value)} type="text"  /></td>
+                        <td> <input onChange={(e) => setCopies(e.target.value)} type="text" value={copies} /></td>
                         <td>*required</td>
                     </tr>  
                     <tr > 
                         <td>Image URL:</td>
-                        <td> <input onChange={(e) => setUrl(e.target.value)} type="url"  /></td>
+                        <td> <input onChange={(e) => setUrl(e.target.value)} type="url" value={url} /></td>
                         <td>URL for image of front page</td>
                     </tr>    
                 </tbody>
             </table>
             <Box sx={{marginTop:"20px"}}>
-                <h3>Re-check all entries then click Submit 
-                <Button type="submit" variant="contained" size="large" sx={{marginLeft:"60px"}}>Submit</Button>
+                <h3 onClick={handleAutoFill}>Re-check all entries then click Submit 
+                <Button type="sub mit" variant="contained" size="large" sx={{marginLeft:"60px"}}>Submit</Button>
                 </h3>
             </Box>
             </form>         

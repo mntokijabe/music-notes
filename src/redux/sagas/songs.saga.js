@@ -60,6 +60,12 @@ function* addNewSong(action) {
 
     const newId = yield axios.post('/api/songs',action.payload)
     yield put({ type: 'GET_SONG_INFO', payload: newId.data.id})
+    Swal.fire({
+        text: 'Adding song was successful!',
+        position: 'top',
+        icon: 'success',
+        confirmButtonText: 'Ok'
+      })
     const {history} = action
     history.push(`/info/${newId.data.id}`)
     } catch (error) {
