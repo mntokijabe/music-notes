@@ -5,7 +5,8 @@ const { rejectNonAdmin, rejectUnauthenticated } = require('../modules/authentica
 
 // GETS the previous notes about a song
 
-router.get('/:id', rejectNonAdmin, rejectUnauthenticated, (req, res) => {
+router.get('/:id', rejectNonAdmin, rejectUnauthenticated, async (req, res) => {
+  try{
   const queryText = `
     SELECT performances_songs.id, performances_songs.song_notes, TO_CHAR(performances.date, 'MM-DD-YY') AS date, 
           performances.description, ensembles.name, songs.title, songs.id as song_id  
@@ -20,14 +21,14 @@ router.get('/:id', rejectNonAdmin, rejectUnauthenticated, (req, res) => {
     ORDER BY performances.date DESC;`
 
   const queryValues = [req.params.id]
-    pool.query(queryText, queryValues)
-    .then(result=> {
+  const result = await pool.query(queryText, queryValues)
+    console.log('result is', result)
         res.send(result.rows);
-    })
-    .catch(err => {
+ 
+  } catch(err) {
         console.log('db error getting notes',err);
         res.sendStatus(500)
-    })
+    }
 });
 
 
