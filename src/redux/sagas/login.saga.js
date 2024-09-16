@@ -53,6 +53,8 @@ function* logoutUser(action) {
     // remove the client-side user object to let
     // the client-side code know the user is logged out
     yield put({ type: 'UNSET_USER' });
+
+    // now clear all the state associated with the now-logged-out user
     yield put({ type: 'UNSET_ACTIVE_SONGS'})
     yield put({ type: 'UNSET_ENSEMBLES'})
     yield put({ type: 'UNSET_GENRE'})

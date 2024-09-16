@@ -19,6 +19,8 @@ router.get('/', (req, res) => {
         res.sendStatus(500)
     })
 });
+
+
 // Gets the list of active songs for a specific ensemble
 router.get('/:id', (req, res) => {
     const queryText = `
@@ -62,6 +64,7 @@ router.post('/', rejectNonAdmin, rejectUnauthenticated, (req, res) => {
     })
 });
 
+//DELETE an active song from an ensemble
 router.delete('/', rejectNonAdmin, rejectUnauthenticated, (req, res) => {
     const queryText = `
         DELETE FROM active_songs
