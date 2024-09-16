@@ -13,6 +13,7 @@ function* fetchEnsembles() {
 function* fetchActiveSongs(action) {
     try {
         const activeSongs = yield axios.get(`/api/ensembles/${action.payload}`)
+        
         yield put({ type: 'SET_ACTIVE_SONGS', payload: activeSongs})
     } catch (error) {
         console.log('Error getting active songs ',error)

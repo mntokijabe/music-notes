@@ -87,7 +87,7 @@ function AddSong () {
                     <tr> 
                         <td>Voicing:</td>
                         <td> 
-                            <Select sx={{width:"150px", height:"40px"}}
+                            <Select sx={{width:"150px", height:"35px", backgroundColor:'white'}}
                                 value={newVoicing}
                                 onChange={(e) => setNewVoicing(e.target.value)} type="text"
                             >
@@ -100,7 +100,7 @@ function AddSong () {
                     <tr>
                     <td>Add genre</td>
                             <td>
-                                <Select sx={{width:"150px", height:"40px"}}
+                                <Select sx={{width:"150px", height:"35px", backgroundColor:'white'}}
                                     value={genre}
                                     onChange={(e) => setGenre(e.target.value)} type="text"
                                 >

@@ -7,12 +7,14 @@ const { rejectNonAdmin, rejectUnauthenticated } = require('../modules/authentica
 
 router.get('/:id', rejectNonAdmin, rejectUnauthenticated, (req, res) => {
   const queryText = `
-    SELECT performances_songs.song_notes, TO_CHAR(performances.date, 'MM-DD-YY') AS date, performances.description, ensembles.name, songs.title  FROM performances
+    SELECT performances_songs.id, performances_songs.song_notes, TO_CHAR(performances.date, 'MM-DD-YY') AS date, 
+          performances.description, ensembles.name, songs.title, songs.id as song_id  
+      FROM performances
       JOIN performances_songs
         ON performances.id = performances_songs.performance_id 
-      JOIN songs
+      FULL OUTER JOIN songs
         ON songs.id = performances_songs.song_id
-      JOIN ensembles
+      FULL OUTER JOIN ensembles
         ON performances_songs.ensemble_id = ensembles.id  
     WHERE songs.id = $1
     ORDER BY performances.date DESC;`
