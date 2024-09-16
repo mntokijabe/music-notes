@@ -179,12 +179,12 @@ VALUES
 INSERT INTO performances
  (date, description)
  VALUES
- ('10-14-2022', 'Fall Concert'),
- ('11/5/2022', 'Middle school concert'),
+ ('10-14-2019', 'Fall Concert'),
+ ('11/5/2016', 'Middle school concert'),
  ('12/18/2022', 'Christmas concert'),
  ('02/05/2023', 'Sweetheart banquet'),
  ('03/24/2023', 'HS Spring concert'),
- ('05/11/2023', 'MS Spring concert');
+ ('05/11/2019', 'Irish Festival');
  
  INSERT INTO performances_songs
   (performance_id, song_id, song_notes, ensemble_id)
@@ -197,7 +197,7 @@ INSERT INTO performances
   (3, 7, 'Rhythyms were not great', 3),
   (4, 20, '', 2),
   (5, 12, 'Just missed qualifying for State with this.', 1),
-  (6, 3, '', 5);
+  (6, 3, 'Excellent arrangement. The audience LOVED it!', 5);
   
 INSERT INTO active_songs
   (ensemble_id, song_id)
@@ -205,13 +205,13 @@ INSERT INTO active_songs
 	(1,4),
 	(1,7),
 	(1,10),
-	(2,2),
-	(2,12),
-	(3,3),
-	(3,6),
-	(3,9),
-	(3,11),
-	(4,3);
+	(2,20),
+	(2,23),
+	(3,5),
+	(3,14),
+	(5,17),
+	(5,19),
+	(4,13);
 
   
 INSERT INTO genres_songs
