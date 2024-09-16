@@ -63,7 +63,7 @@ function App() {
       <>
         <Header />
         <Nav />
-        <Container component="main" disableGutters style={{ display: 'flex',  gap:12, }}>
+        <Container component="main" disableGutters  sx={{ display: 'flex',  gap:12, margin:2 }}>
           {user.id && <Sidebar />}
           {children}
         </Container>

@@ -81,13 +81,9 @@ router.post('/', rejectNonAdmin, rejectUnauthenticated, async(req, res) => {
         res.sendStatus(500)
     }
   });
+
 /**
  * DELETE route 
  */
-
-
-
-
-
 
 module.exports = router;

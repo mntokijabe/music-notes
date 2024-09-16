@@ -1,7 +1,8 @@
 import axios from "axios";
 import { takeLatest, put } from "redux-saga/effects";
 
-
+// the all-powerful search.  Sends a query for 
+// a specific category
 function* searchThing(action) {
     const category =  action.payload.category
     try{
@@ -21,7 +22,6 @@ function* searchThing(action) {
 
 function* search() {
     yield takeLatest('SEARCH_THING', searchThing);
-  //   yield takeLatest('GET_ACTIVE_SONGS', fetchActiveSongs);
   }
   
   export default search;

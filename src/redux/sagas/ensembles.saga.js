@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
-function* fetchEnsembles() {
+// gets list of all ensemble groups
+function* fetchEnsembles() { 
   try {
     const response = yield axios.get('/api/ensembles');
     yield put({ type: 'SET_ENSEMBLES', payload: response.data });
@@ -10,7 +11,8 @@ function* fetchEnsembles() {
   }
 }
 
-function* fetchActiveSongs(action) {
+// gets list of songs for the selected ensemble
+function* fetchActiveSongs(action) {   
     try {
         const activeSongs = yield axios.get(`/api/ensembles/${action.payload}`)
         
@@ -20,7 +22,8 @@ function* fetchActiveSongs(action) {
     }
 }
 
-function* deleteActiveSong(action) {
+//deletes a song from the active group for an ensemble
+function* deleteActiveSong(action) {  
     try {
         yield axios.delete('/api/ensembles',{params: 
           {songId: action.payload.songId, ensembleId: action.payload.ensembleId}})
@@ -29,7 +32,9 @@ function* deleteActiveSong(action) {
         console.log('Error getting active songs ',error)
     }
 }
-function* addToRepertoire (action) {
+
+// adds a song to the active group for an ensemble
+function* addToRepertoire (action) {  
   try {
       yield axios.post('/api/ensembles',action.payload)
       yield put({ type: 'GET_ACTIVE_SONGS', payload:action.payload.ensemble_id})

@@ -182,15 +182,15 @@ function SongEdit () {
             </Box>         
         </Box>
 
-        <Paper elevation='0' sx={{marginLeft:"30px", justifyContent:"center"}}>
+        <Paper elevation='0' sx={{marginLeft:"30px"}}>
             Image URL: <input onChange={(e) => setUrl(e.target.value)} type="text" value={url} />
             <br></br>
             <Button onClick={() => handleEdit("url")} variant="outlined" sx={{marginLeft:"100px"}} >Submit</Button>
             <p></p>
-            <Paper sx={{justifyContent:"center"}}>
-                <img src={songInfo.image_url} style={{height:"300px"}}></img>
+            <Paper sx={{display:'flex', justifyContent:"center"}}>
+                <img src={songInfo.image_url} style={{height:"300px", justifyItems:'center'}}></img>
             </Paper>
-            <Button sx={{marginTop:"150px"}}  component={Link} to={`/info/${songId}`} variant="contained">Cancel Editing</Button>
+            <Button sx={{mt:"120px", ml:'80px', mb:'50px'}}  component={Link} to={`/info/${songId}`} variant="contained">Cancel Editing</Button>
         </Paper>
        </Container> 
     )

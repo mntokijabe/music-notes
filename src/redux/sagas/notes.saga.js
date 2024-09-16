@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
+// get the notes for the currently selected song
 function* fetchNotes(action) {
   try {
-
     const response = yield axios.get(`/api/notes/${action.payload}`);
     yield put({ type: 'SET_NOTES', payload: response});
   } catch (error) {
@@ -11,6 +11,7 @@ function* fetchNotes(action) {
   }
 }
 
+// add a new note for the currently selected song
 function* addNotes(action) {
     try {
         yield axios.post('/api/notes',action.payload)
