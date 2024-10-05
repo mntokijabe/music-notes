@@ -119,6 +119,7 @@ Form Treatment
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-left: 570px;
 
 }
 input {

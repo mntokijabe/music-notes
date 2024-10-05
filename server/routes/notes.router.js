@@ -3,7 +3,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const { rejectNonAdmin, rejectUnauthenticated } = require('../modules/authentication-middleware');
 
-// GETS the previous notes about a song
+// GETS the previous notes about a song, only available to admin
 
 router.get('/:id', rejectNonAdmin, rejectUnauthenticated, async (req, res) => {
   try{

@@ -127,7 +127,7 @@ function App() {
             </Route>
 
             <Route>
-              <h1>404</h1>
+              <h1>406</h1>
             </Route>
           </Switch>
           </Layout>
