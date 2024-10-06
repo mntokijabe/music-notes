@@ -26,6 +26,8 @@ Container
 
 .container {
   padding: 20px;
+  justify-items: center;
+  margin-left:500px
 }
 
 /* --------------------------------------------------------------------------------
@@ -119,6 +121,7 @@ Form Treatment
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-left: 570px;
 
 }
 input {

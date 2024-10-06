@@ -89,169 +89,169 @@ ALTER TABLE "performances_songs" ADD CONSTRAINT "performances_songs_fk2" FOREIGN
 
 ALTER TABLE "performances_songs" ADD CONSTRAINT "performances_songs_fk4" FOREIGN KEY ("ensemble_id") REFERENCES "ensembles"("id");
 
-INSERT INTO ensembles
- (name)
-VALUES
-('Concert Choir'),
-('Swing Choir'),
-('Middle School'),
-('Madrigals'),
-('Chorale');
+-- INSERT INTO ensembles
+--  (name)
+-- VALUES
+-- ('Concert Choir'),
+-- ('Swing Choir'),
+-- ('Middle School'),
+-- ('Madrigals'),
+-- ('Chorale');
 
 
-INSERT INTO genres
- (genre_name)
-VALUES
-( 'Christmas'),
-( 'Classical'),
-( 'Contemporary'),
-( 'Folk'),
-( 'Pop'),
-( 'Renaissance'),
-( 'Sacred'),
-( 'Spiritual'),
-( 'World Music');
+-- INSERT INTO genres
+--  (genre_name)
+-- VALUES
+-- ( 'Christmas'),
+-- ( 'Classical'),
+-- ( 'Contemporary'),
+-- ( 'Folk'),
+-- ( 'Pop'),
+-- ( 'Renaissance'),
+-- ( 'Sacred'),
+-- ( 'Spiritual'),
+-- ( 'World Music');
 
-INSERT INTO voicings
- (name)
-VALUES
-( 'SA'),
-( 'SSA'),
-( 'SSAA'),
-( 'SAB'),
-( '2-part'),
-( '3-part'),
-( 'SATB'),
-( 'SSAATTBB'),
-( 'TTB'),
-( 'TTBB');
+-- INSERT INTO voicings
+--  (name)
+-- VALUES
+-- ( 'SA'),
+-- ( 'SSA'),
+-- ( 'SSAA'),
+-- ( 'SAB'),
+-- ( '2-part'),
+-- ( '3-part'),
+-- ( 'SATB'),
+-- ( 'SSAATTBB'),
+-- ( 'TTB'),
+-- ( 'TTBB');
 
-INSERT INTO publishers
- (name)
-VALUES
-( 'Alfred Music'),
-( 'Boosey & Hawkes'),
-( 'Concordia Publishing'),
-( 'Durand'),
-( 'E.C. Schirmer'),
-( 'G. Schirmer'),
-( 'Hal Leonard'),
-( 'Heritage Music Press'),
-( 'Hinshaw Music'),
-( 'Oxford University Press');
-
-
-
-INSERT INTO songs
-(title, composer, arranged_by, voicing_id, quantity, copyright_year, publisher, image_url)
-VALUES
-('Amazing Grace', 'John Newton','','6','45', '2004','Hal Leonard','https://halleonard-coverimages.s3.amazonaws.com/wl/08300531-wl.jpg'),
-('Ave Maria', 'Franz Schubert', '','7','47', '1970','G. Schirmer','https://www.jwpepper.com/cdn-cgi/image/width=83%20quality=75/covers/1/1747021.gif'),
-('Danny Boy', 'Frederic Weatherly', '','4','51', '1990','Alfred Music','https://static.alfred.com/cache/7e/bc/7ebcfe96ccdb4ed069c7fb6edf71d6f5.jpg'),
-('Betelehemu', 'Michael J. Miller','','7','44', '2001','Boosey & Hawkes','https://static.alfred.com/cache/73/a7/73a74111178ee2e09bc6ddddbf288f3e.jpg'),
-('The Lion Sleeps Tonight', 'George David Weiss', '','7','50', '1992','Hal Leonard','https://halleonard-coverimages.s3.amazonaws.com/wl/00249511-wl.jpg'),
-('Sing a New Song', 'Paul Sjolund', '','2','18', '2011','Hinshaw Music','https://www.hinshawmusic.com/wp-content/uploads/2023/04/Hinshaw-Music-Cover-Placeholder.jpg.webp'),
-('Hark! The Herald Angels Sing', 'Felix Mendelssohn', '','7','36', '1987','Oxford University Press','https://c.media-amazon.com/images/I/419JwRehsmL._SY342_.jpg'),
-('Let It Be', 'Paul McCartney', '','7','60', '2005','Hal Leonard','https://halleonard-coverimages.s3.amazonaws.com/wl/08200810-wl.jpg'),
-('The Road Home', 'Stephen Paulus', '','7','58', '1999','E.C. Schirmer','https://stephenpaulus.com/cdn/shop/products/Screen_Shot_2013-08-03_at_9.41.47_PM.png?v=1571438665&width=1200'),
-('Lullaby', 'Johannes Brahms', '','5','51', '1965','G. Schirmer','https://www.sheetmusicplus.com/dw/image/v2/BJFX_PRD/on/demandware.static/-/Sites-smp-main/default/dwa786eba2/images/9200/3539200_cover-large_file.png?sw=900&sh=1200&sm=fit'),
-('How Can I Keep From Singing?', 'Robert Lowry','Robert Hugh','7','35', '2008','Hal Leonard','https://www.sheetmusicplus.com/dw/image/v2/BJFX_PRD/on/demandware.static/-/Sites-smp-main/default/dw7f6e0cd0/images/507/4150507_cover-large_file.png?sw=900&sh=1200&sm=fit'),
-('Cantate Domino', 'Hans Leo Hassler','John Leavitt','7','37', '1995','Concordia Publishing','https://www.sheetmusicplus.com/dw/image/v2/BJFX_PRD/on/demandware.static/-/Sites-smp-main/default/dwf8666aaa/images/8805/3838805_cover-large_file.png?sw=900&sh=1200&sm=fit'),
-('The Battle of Jericho', 'Traditional','Roger Emerson','7','41', '2007','Heritage Music Press','https://www.sheetmusicplus.com/dw/image/v2/BJFX_PRD/on/demandware.static/-/Sites-smp-main/default/dwd93714f9/images/3320/19533320_cover-large_file.png?sw=900&sh=1200&sm=fit'),
-('My Lord, What a Morning', 'Traditional','Victor C. Johnson','7','44', '1998','Alfred Music','https://static.alfred.com/cache/ea/b8/eab8e09867380f2aa61f7243afb64ab5.jpg'),
-('Shenandoah', 'James Erb','','10','22', '1987','Boosey & Hawkes','https://www.jwpepper.com/cdn-cgi/image/width=190%20quality=75/covers/1/1898949.jpg'),
-('Cantique de Jean Racine', 'Gabriel Fauré', '','7','56', '1981','Durand','https://www.jwpepper.com/cdn-cgi/image/width=190%20quality=75/covers/1/1629864.jpg'),
-('For the Beauty of the Earth', 'John Rutter', '','7','43', '2004','Oxford University Press','https://global.oup.com/academic/covers/pdp/9780193405721'),
-('I’m Gonna Sing', 'Traditional', '','7','42', '1990','9','https://media.publit.io/file/Hinshaw/Hinshaw1993/HMC1278_I-m-A-Gonna-Sing_-1993-_cover.png'),
-('O Magnum Mysterium', 'Morten Lauridsen', '','7','29', '1994','Hinshaw Music','https://www.sheetmusicplus.com/dw/image/v2/BJFX_PRD/on/demandware.static/-/Sites-smp-main/default/dw95a07a90/images/6347/19556347_cover-large_file.png?sw=900&sh=1200&sm=fit'),
-('Mister Sandman', 'Pat Ballard','Ed Lojeski','2','18', '1986','Hal Leonard','https://halleonard-coverimages.s3.amazonaws.com/wl/08243403-wl.jpg'),
-('Ain’t No Mountain High Enough', 'Nickolas Ashford','Roger Emerson','7','35', '2009','Hal Leonard','https://halleonard-coverimages.s3.amazonaws.com/wl/08201028-wl.jpg'),
-('The Peaceable Kingdom', 'Randall Thompson', '','7','56', '1967','E.C. Schirmer','https://www.ecspublishing.com/pub/media/catalog/product/cache/93cefd10cac7840c9c2bda9c82348293/1/7/1730.jpg'),
-('Rock-a-My Soul', 'Traditional','Kirby Shaw','7','54', '2004','Hal Leonard','https://halleonard-coverimages.s3.amazonaws.com/wl/00287158-wl.jpg'),
-('Deep River', 'Traditional','R. Nathaniel Dett','9','32', '1995','Alfred Music','https://static.alfred.com/cache/79/a1/79a1c292766b27604d3310fb4e97733b.jpg'),
-('Joshua Fit the Battle of Jericho', 'Traditional','Roger Emerson','7','45', '2010','Hal Leonard','https://www.sheetmusicplus.com/dw/image/v2/BJFX_PRD/on/demandware.static/-/Sites-smp-main/default/dw82b00f61/images/3321/19533321_cover-large_file.png?sw=900&sh=1200&sm=fit'),
-('All Things Bright and Beautiful', 'John Rutter', '','7','34', '2002','Oxford University Press','https://global.oup.com/academic/covers/pdp/9780193407343'),
-('The Little Drummer Boy', 'Katherine K. Davis','Harry Simeone','2','23', '1997','Hal Leonard','https://halleonard-coverimages.s3.amazonaws.com/wl/35013037-wl.jpg'),
-('Sicut Cervus', 'Giovanni Pierluigi da Palestrina', '','7','33', '1984','G. Schirmer','https://www.jwpepper.com/cdn-cgi/image/width=190%20quality=75/covers/1/1382456.jpg'),
-('In the Bleak Midwinter', 'Gustav Holst','Phillip Keveren','2','28', '1990','Oxford University Press','https://s7d9.scene7.com/is/image/LifeWayChristianResources/005805390?wid=840');
+-- INSERT INTO publishers
+--  (name)
+-- VALUES
+-- ( 'Alfred Music'),
+-- ( 'Boosey & Hawkes'),
+-- ( 'Concordia Publishing'),
+-- ( 'Durand'),
+-- ( 'E.C. Schirmer'),
+-- ( 'G. Schirmer'),
+-- ( 'Hal Leonard'),
+-- ( 'Heritage Music Press'),
+-- ( 'Hinshaw Music'),
+-- ( 'Oxford University Press');
 
 
-INSERT INTO performances
- (date, description)
- VALUES
- ('10-14-2019', 'Fall Concert'),
- ('11/5/2016', 'Middle school concert'),
- ('12/18/2022', 'Christmas concert'),
- ('02/05/2023', 'Sweetheart banquet'),
- ('03/24/2023', 'HS Spring concert'),
- ('05/11/2019', 'Irish Festival');
+
+-- INSERT INTO songs
+-- (title, composer, arranged_by, voicing_id, quantity, copyright_year, publisher, image_url)
+-- VALUES
+-- ('Amazing Grace', 'John Newton','','6','45', '2004','Hal Leonard','https://halleonard-coverimages.s3.amazonaws.com/wl/08300531-wl.jpg'),
+-- ('Ave Maria', 'Franz Schubert', '','7','47', '1970','G. Schirmer','https://www.jwpepper.com/cdn-cgi/image/width=83%20quality=75/covers/1/1747021.gif'),
+-- ('Danny Boy', 'Frederic Weatherly', '','4','51', '1990','Alfred Music','https://static.alfred.com/cache/7e/bc/7ebcfe96ccdb4ed069c7fb6edf71d6f5.jpg'),
+-- ('Betelehemu', 'Michael J. Miller','','7','44', '2001','Boosey & Hawkes','https://static.alfred.com/cache/73/a7/73a74111178ee2e09bc6ddddbf288f3e.jpg'),
+-- ('The Lion Sleeps Tonight', 'George David Weiss', '','7','50', '1992','Hal Leonard','https://halleonard-coverimages.s3.amazonaws.com/wl/00249511-wl.jpg'),
+-- ('Sing a New Song', 'Paul Sjolund', '','2','18', '2011','Hinshaw Music','https://www.hinshawmusic.com/wp-content/uploads/2023/04/Hinshaw-Music-Cover-Placeholder.jpg.webp'),
+-- ('Hark! The Herald Angels Sing', 'Felix Mendelssohn', '','7','36', '1987','Oxford University Press','https://c.media-amazon.com/images/I/419JwRehsmL._SY342_.jpg'),
+-- ('Let It Be', 'Paul McCartney', '','7','60', '2005','Hal Leonard','https://halleonard-coverimages.s3.amazonaws.com/wl/08200810-wl.jpg'),
+-- ('The Road Home', 'Stephen Paulus', '','7','58', '1999','E.C. Schirmer','https://stephenpaulus.com/cdn/shop/products/Screen_Shot_2013-08-03_at_9.41.47_PM.png?v=1571438665&width=1200'),
+-- ('Lullaby', 'Johannes Brahms', '','5','51', '1965','G. Schirmer','https://www.sheetmusicplus.com/dw/image/v2/BJFX_PRD/on/demandware.static/-/Sites-smp-main/default/dwa786eba2/images/9200/3539200_cover-large_file.png?sw=900&sh=1200&sm=fit'),
+-- ('How Can I Keep From Singing?', 'Robert Lowry','Robert Hugh','7','35', '2008','Hal Leonard','https://www.sheetmusicplus.com/dw/image/v2/BJFX_PRD/on/demandware.static/-/Sites-smp-main/default/dw7f6e0cd0/images/507/4150507_cover-large_file.png?sw=900&sh=1200&sm=fit'),
+-- ('Cantate Domino', 'Hans Leo Hassler','John Leavitt','7','37', '1995','Concordia Publishing','https://www.sheetmusicplus.com/dw/image/v2/BJFX_PRD/on/demandware.static/-/Sites-smp-main/default/dwf8666aaa/images/8805/3838805_cover-large_file.png?sw=900&sh=1200&sm=fit'),
+-- ('The Battle of Jericho', 'Traditional','Roger Emerson','7','41', '2007','Heritage Music Press','https://www.sheetmusicplus.com/dw/image/v2/BJFX_PRD/on/demandware.static/-/Sites-smp-main/default/dwd93714f9/images/3320/19533320_cover-large_file.png?sw=900&sh=1200&sm=fit'),
+-- ('My Lord, What a Morning', 'Traditional','Victor C. Johnson','7','44', '1998','Alfred Music','https://static.alfred.com/cache/ea/b8/eab8e09867380f2aa61f7243afb64ab5.jpg'),
+-- ('Shenandoah', 'James Erb','','10','22', '1987','Boosey & Hawkes','https://www.jwpepper.com/cdn-cgi/image/width=190%20quality=75/covers/1/1898949.jpg'),
+-- ('Cantique de Jean Racine', 'Gabriel Fauré', '','7','56', '1981','Durand','https://www.jwpepper.com/cdn-cgi/image/width=190%20quality=75/covers/1/1629864.jpg'),
+-- ('For the Beauty of the Earth', 'John Rutter', '','7','43', '2004','Oxford University Press','https://global.oup.com/academic/covers/pdp/9780193405721'),
+-- ('I’m Gonna Sing', 'Traditional', '','7','42', '1990','9','https://media.publit.io/file/Hinshaw/Hinshaw1993/HMC1278_I-m-A-Gonna-Sing_-1993-_cover.png'),
+-- ('O Magnum Mysterium', 'Morten Lauridsen', '','7','29', '1994','Hinshaw Music','https://www.sheetmusicplus.com/dw/image/v2/BJFX_PRD/on/demandware.static/-/Sites-smp-main/default/dw95a07a90/images/6347/19556347_cover-large_file.png?sw=900&sh=1200&sm=fit'),
+-- ('Mister Sandman', 'Pat Ballard','Ed Lojeski','2','18', '1986','Hal Leonard','https://halleonard-coverimages.s3.amazonaws.com/wl/08243403-wl.jpg'),
+-- ('Ain’t No Mountain High Enough', 'Nickolas Ashford','Roger Emerson','7','35', '2009','Hal Leonard','https://halleonard-coverimages.s3.amazonaws.com/wl/08201028-wl.jpg'),
+-- ('The Peaceable Kingdom', 'Randall Thompson', '','7','56', '1967','E.C. Schirmer','https://www.ecspublishing.com/pub/media/catalog/product/cache/93cefd10cac7840c9c2bda9c82348293/1/7/1730.jpg'),
+-- ('Rock-a-My Soul', 'Traditional','Kirby Shaw','7','54', '2004','Hal Leonard','https://halleonard-coverimages.s3.amazonaws.com/wl/00287158-wl.jpg'),
+-- ('Deep River', 'Traditional','R. Nathaniel Dett','9','32', '1995','Alfred Music','https://static.alfred.com/cache/79/a1/79a1c292766b27604d3310fb4e97733b.jpg'),
+-- ('Joshua Fit the Battle of Jericho', 'Traditional','Roger Emerson','7','45', '2010','Hal Leonard','https://www.sheetmusicplus.com/dw/image/v2/BJFX_PRD/on/demandware.static/-/Sites-smp-main/default/dw82b00f61/images/3321/19533321_cover-large_file.png?sw=900&sh=1200&sm=fit'),
+-- ('All Things Bright and Beautiful', 'John Rutter', '','7','34', '2002','Oxford University Press','https://global.oup.com/academic/covers/pdp/9780193407343'),
+-- ('The Little Drummer Boy', 'Katherine K. Davis','Harry Simeone','2','23', '1997','Hal Leonard','https://halleonard-coverimages.s3.amazonaws.com/wl/35013037-wl.jpg'),
+-- ('Sicut Cervus', 'Giovanni Pierluigi da Palestrina', '','7','33', '1984','G. Schirmer','https://www.jwpepper.com/cdn-cgi/image/width=190%20quality=75/covers/1/1382456.jpg'),
+-- ('In the Bleak Midwinter', 'Gustav Holst','Phillip Keveren','2','28', '1990','Oxford University Press','https://s7d9.scene7.com/is/image/LifeWayChristianResources/005805390?wid=840');
+
+
+-- INSERT INTO performances
+--  (date, description)
+--  VALUES
+--  ('10-14-2019', 'Fall Concert'),
+--  ('11/5/2016', 'Middle school concert'),
+--  ('12/18/2022', 'Christmas concert'),
+--  ('02/05/2023', 'Sweetheart banquet'),
+--  ('03/24/2023', 'HS Spring concert'),
+--  ('05/11/2019', 'Irish Festival');
  
- INSERT INTO performances_songs
-  (performance_id, song_id, song_notes, ensemble_id)
-  VALUES
-  (1, 14, 'Great first concert', 1),
-  (1, 9, '', 1),
-  (1, 21, 'Nailed it', 2),
-  (2, 17, 'Probably too hard for this early in the year', 5),
-  (2, 28, 'Great first concert', 4),
-  (3, 7, 'Rhythyms were not great', 3),
-  (4, 20, '', 2),
-  (5, 12, 'Just missed qualifying for State with this.', 1),
-  (6, 3, 'Excellent arrangement. The audience LOVED it!', 5);
+--  INSERT INTO performances_songs
+--   (performance_id, song_id, song_notes, ensemble_id)
+--   VALUES
+--   (1, 14, 'Great first concert', 1),
+--   (1, 9, '', 1),
+--   (1, 21, 'Nailed it', 2),
+--   (2, 17, 'Probably too hard for this early in the year', 5),
+--   (2, 28, 'Great first concert', 4),
+--   (3, 7, 'Rhythyms were not great', 3),
+--   (4, 20, '', 2),
+--   (5, 12, 'Just missed qualifying for State with this.', 1),
+--   (6, 3, 'Excellent arrangement. The audience LOVED it!', 5);
   
-INSERT INTO active_songs
-  (ensemble_id, song_id)
-  VALUES
-	(1,4),
-	(1,7),
-	(1,10),
-	(2,20),
-	(2,23),
-	(3,5),
-	(3,14),
-	(5,17),
-	(5,19),
-	(4,13);
+-- INSERT INTO active_songs
+--   (ensemble_id, song_id)
+--   VALUES
+-- 	(1,4),
+-- 	(1,7),
+-- 	(1,10),
+-- 	(2,20),
+-- 	(2,23),
+-- 	(3,5),
+-- 	(3,14),
+-- 	(5,17),
+-- 	(5,19),
+-- 	(4,13);
 
   
-INSERT INTO genres_songs
-  (genre_id, song_id)
-  VALUES
-	(1,4),
-	(1,7),
-	(1,10),
-	(1,27),
-	(1,29),
-	(2,2),
-	(2,12),
-	(2,16),
-	(2,19),
-	(2,28),
-	(3,3),
-	(3,6),
-	(3,9),
-	(3,11),
-	(3,17),
-	(3,26),
-	(4,3),
-	(4,15),
-	(4,23),
-	(5,5),
-	(5,8),
-	(5,20),
-	(5,21),
-	(6,12),
-	(6,19),
-	(6,28),
-	(7,1),
-	(7,19),
-	(7,25),
-	(8,1),
-	(8,6),
-	(8,13),
-	(8,18),
-	(8,22),
-	(8,24),
-	(8,25),
-	(8,14),
-	(9,4);
+-- INSERT INTO genres_songs
+--   (genre_id, song_id)
+--   VALUES
+-- 	(1,4),
+-- 	(1,7),
+-- 	(1,10),
+-- 	(1,27),
+-- 	(1,29),
+-- 	(2,2),
+-- 	(2,12),
+-- 	(2,16),
+-- 	(2,19),
+-- 	(2,28),
+-- 	(3,3),
+-- 	(3,6),
+-- 	(3,9),
+-- 	(3,11),
+-- 	(3,17),
+-- 	(3,26),
+-- 	(4,3),
+-- 	(4,15),
+-- 	(4,23),
+-- 	(5,5),
+-- 	(5,8),
+-- 	(5,20),
+-- 	(5,21),
+-- 	(6,12),
+-- 	(6,19),
+-- 	(6,28),
+-- 	(7,1),
+-- 	(7,19),
+-- 	(7,25),
+-- 	(8,1),
+-- 	(8,6),
+-- 	(8,13),
+-- 	(8,18),
+-- 	(8,22),
+-- 	(8,24),
+-- 	(8,25),
+-- 	(8,14),
+-- 	(9,4);
