@@ -26,6 +26,8 @@ Container
 
 .container {
   padding: 20px;
+  justify-items: center;
+  margin-left:500px
 }
 
 /* --------------------------------------------------------------------------------

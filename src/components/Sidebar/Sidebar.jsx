@@ -62,7 +62,7 @@ function Sidebar() {
         >
           <h3>Select an Ensemble</h3>
           <Select
-            sx={{ ml: "15px", width: "100px", ml: "20px", height: "30px" }}
+            sx={{ ml: "15px", width: "150px",  height: "30px" }}
             value={choralGroup}
             onChange={(e) => {
               handleSelect(e);
