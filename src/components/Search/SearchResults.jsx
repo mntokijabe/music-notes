@@ -1,7 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import {
-  useHistory,
   useParams,
 } from "react-router-dom/cjs/react-router-dom.min";
 import { Box } from "@mui/material";

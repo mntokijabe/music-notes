@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import {useSelector} from 'react-redux';
-import { Container } from '@mui/material';
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { Container } from "@mui/material";
 
 function LoginForm() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const errors = useSelector(store => store.errors);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const errors = useSelector((store) => store.errors);
   const dispatch = useDispatch();
 
   const login = (event) => {
@@ -14,19 +14,19 @@ function LoginForm() {
 
     if (username && password) {
       dispatch({
-        type: 'LOGIN',
+        type: "LOGIN",
         payload: {
           username: username,
           password: password,
         },
       });
     } else {
-      dispatch({ type: 'LOGIN_INPUT_ERROR' });
+      dispatch({ type: "LOGIN_INPUT_ERROR" });
     }
   }; // end login
 
   return (
-    <Container sx={{display: 'flex', justifyContent:'center'}}>
+    <Container sx={{ display: "flex", justifyContent: "center" }}>
       <form className="formPanel" onSubmit={login}>
         <h2>Login</h2>
         {errors.loginMessage && (
@@ -59,10 +59,16 @@ function LoginForm() {
           </label>
         </div>
         <div>
-          <input className="btn" type="submit" name="submit" value="Log In" style={{marginLeft:"125px", width:"100px"}}/>
+          <input
+            className="btn"
+            type="submit"
+            name="submit"
+            value="Log In"
+            style={{ marginLeft: "125px", width: "100px" }}
+          />
         </div>
       </form>
-      </Container>
+    </Container>
   );
 }
 
